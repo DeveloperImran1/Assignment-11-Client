@@ -24,6 +24,8 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -33,7 +35,13 @@ const RoomDetails = () => {
     const { user } = useContext(AuthContext);
     const [startDate, setStartDate] = useState(new Date());
     const bookingDate = new Date(startDate).toLocaleDateString();
-    console.log(bookingDate)
+
+
+
+    // react tostify
+    const bookingError = () => {
+        toast.error("Not Available This Room!")
+    }
 
     useEffect(() => {
 
@@ -45,30 +53,33 @@ const RoomDetails = () => {
     }, [])
     const { _id, Area, Availability, Facilities, Location, PricePerNight, Reviews, RoomDescription, RoomImages
         , RoomSize, RoomTitle, SpecialOffers, Status, Utilities } = room;
-    console.log(Area)
+    const userEmail = user?.email;
 
-    const bookignData = { roomId: _id, Area, Location, PricePerNight, RoomImages, RoomTitle, Status, bookingDate };
+    const bookignData = { roomId: _id, Area, Location, PricePerNight, RoomImages, RoomTitle, Status, bookingDate, userEmail };
     const updateAvailability = { Availability: false };
 
     const handleBooking = (e) => {
         e.preventDefault()
-        swal(
-
-
-            {
-                title: "Are you sure?",
-                text: "You have This Room Booking !",
-
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
+        if (!Availability) {
+            return bookingError()
+        }
+    
+        swal({
+            title: "Are You Sure?",
+            text: "This Room You Booking!",
+            icon: "warning",
+            button: "Confirm",
+            content: {
+                element: "div",
+                attributes: {
+                    innerHTML: `<p>${RoomTitle}</p><p>Your Booking Date: ${bookingDate}</p><p>Price Per Night: $ ${PricePerNight}</p>`
+                },
             }
-
-        )
+        })
             .then((willDelete) => {
                 console.log(willDelete)
                 if (willDelete) {
-                    axios.post("http://localhost:5000/rooms", bookignData)
+                    axios.post("http://localhost:5000/bookingRooms", bookignData)
                         .then(res => {
                             if (res.data.acknowledged) {
                                 console.log("booking hoisa", res.data)
@@ -76,7 +87,7 @@ const RoomDetails = () => {
                                     .then(res => {
                                         console.log(res.data)
                                         if (res.data.modifiedCount) {
-                                            swal("Poof! Your imaginary file has been deleted!", {
+                                            swal("Successfully Booked This Room", {
                                                 icon: "success",
                                             });
                                         }
@@ -88,7 +99,7 @@ const RoomDetails = () => {
 
 
                 } else {
-                    swal("Your imaginary file is safe!");
+                    swal("You have cancle this Booking!");
                 }
             });
     }

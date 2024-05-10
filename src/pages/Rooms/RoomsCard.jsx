@@ -11,7 +11,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 const RoomsCard = ({ room }) => {
     const { _id, Area, Availability, Facilities, Location, PricePerNight, Reviews, RoomDescription, RoomImages
-, RoomSize, RoomTitle, SpecialOffers, Status,  Utilities,    } = room;
+        , RoomSize, RoomTitle, SpecialOffers, Status, Utilities } = room;
     console.log(_id)
     return (
 
@@ -34,10 +34,12 @@ const RoomsCard = ({ room }) => {
                 >
                     <SwiperSlide>
                         <div className="relative group">
-                            <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
-                                {/* love  */}
-                                <button className="rounded-xl bg-[#0095FF] px-3 py-1 font-medium text-white duration-200 hover:bg-[#0095FF]/90">30% off</button>
-                            </div>
+                            {
+                                SpecialOffers && <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
+                                    {/* love  */}
+                                    <button className="rounded-xl bg-[#0095FF] px-3 py-1 font-medium text-white duration-200 hover:bg-[#0095FF]/90">30% off</button>
+                                </div>
+                            }
                             <img width={300} height={300} className="h-full w-full rounded-lg bg-black/40" src="https://source.unsplash.com/300x300/?macbook" alt="card navigate ui" />
                             <div className=" size-1 p-[3px]  flex justify-center items-center absolute top-3 right-1 group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:right-0 group-hover:bg-blue-100/60 duration-500 transition-all">
 
@@ -49,10 +51,12 @@ const RoomsCard = ({ room }) => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="relative group">
-                            <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
-                                {/* love  */}
-                                <button className="rounded-xl bg-[#0095FF] px-3 py-1 font-medium text-white duration-200 hover:bg-[#0095FF]/90">30% off</button>
-                            </div>
+                            {
+                                SpecialOffers && <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
+                                    {/* love  */}
+                                    <button className="rounded-xl bg-[#0095FF] px-3 py-1 font-medium text-white duration-200 hover:bg-[#0095FF]/90">30% off</button>
+                                </div>
+                            }
                             <img width={300} height={300} className="h-full w-full rounded-lg bg-black/40" src="https://source.unsplash.com/300x300/?macbook" alt="card navigate ui" />
                             <div className=" size-1 p-[3px]  flex justify-center items-center absolute top-3 right-1 group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:right-0 group-hover:bg-blue-100/60 duration-500 transition-all">
 
@@ -64,10 +68,12 @@ const RoomsCard = ({ room }) => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="relative group">
-                            <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
-                                {/* love  */}
-                                <button className="rounded-xl bg-[#0095FF] px-3 py-1 font-medium text-white duration-200 hover:bg-[#0095FF]/90">30% off</button>
-                            </div>
+                            {
+                                SpecialOffers && <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
+                                    {/* love  */}
+                                    <button className="rounded-xl bg-[#0095FF] px-3 py-1 font-medium text-white duration-200 hover:bg-[#0095FF]/90">30% off</button>
+                                </div>
+                            }
                             <img width={300} height={300} className="h-full w-full rounded-lg bg-black/40" src="https://source.unsplash.com/300x300/?macbook" alt="card navigate ui" />
                             <div className=" size-1 p-[3px]  flex justify-center items-center absolute top-3 right-1 group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:right-0 group-hover:bg-blue-100/60 duration-500 transition-all">
 
@@ -77,7 +83,7 @@ const RoomsCard = ({ room }) => {
                         </div>
 
                     </SwiperSlide>
-                  
+
 
 
 
@@ -86,12 +92,12 @@ const RoomsCard = ({ room }) => {
 
             </Link>
             <div className="mx-auto w-[85%] space-y-2 text-center font-semibold">
-                <h6 className="text-sm md:text-base lg:text-lg">Student Reading Room</h6>
-              <div className="flex justify-between" >
-              {/* <p className="text-xs font-semibold text-gray-400 md:text-sm">Per Night: {PricePerNight} </p> */}
-              <h1 className="w-[35%] text-[14px] font-bold tracking-wider text-sky-900 dark:text-[#289DFF] md:text-2xl"><sup className="text-[14px] font-black">$</sup>{PricePerNight}<sub className="text-sm tracking-tight">/night</sub></h1>
-              <button className="rounded-xl bg-[#22c55e]  px-3 py-1 font-medium text-white duration-200 hover:bg-[#0095FF]/90">Available</button>
-              </div>
+                <h6 className="text-sm md:text-base lg:text-lg">{RoomTitle}</h6>
+                <div className="flex justify-between" >
+                    {/* <p className="text-xs font-semibold text-gray-400 md:text-sm">Per Night: {PricePerNight} </p> */}
+                    <h1 className="w-[35%] text-[14px] font-bold tracking-wider text-sky-900 dark:text-[#289DFF] md:text-2xl"><sup className="text-[14px] font-black">$</sup>{PricePerNight}<sub className="text-sm tracking-tight">/night</sub></h1>
+                    <button className="rounded-xl bg-[#22c55e]  px-3 py-1 font-medium text-white duration-200 hover:bg-[#0095FF]/90">{`${Availability ? 'Available': 'Unavailable'}`}</button>
+                </div>
             </div>
             <div className="flex flex-wrap items-center justify-evenly gap-6 text-sm md:text-base">
                 <Link to={`/rooms/${_id}`} >  <button className="rounded-lg bg-[#49B2FF] px-4 py-2 font-sans font-semibold text-white duration-300 hover:scale-105 hover:bg-sky-600">Buy now</button></Link>

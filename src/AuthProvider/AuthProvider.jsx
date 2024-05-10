@@ -9,6 +9,7 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [currentRoom, setCurrentRoom] = useState({});
 
 
     // user create
@@ -52,6 +53,7 @@ const AuthProvider = ({ children }) => {
     }
 
 
+
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
@@ -67,7 +69,7 @@ const AuthProvider = ({ children }) => {
 console.log(" Current user: ", user)
 
 
-    const authInfo = { register, login, user, logOut, signInGoogle, signInGithub, loading, handleUpdateProfile }
+    const authInfo = { register, login, user, logOut, signInGoogle, signInGithub, loading, handleUpdateProfile, setCurrentRoom, currentRoom }
 
     return (
         <AuthContext.Provider value={authInfo}>
