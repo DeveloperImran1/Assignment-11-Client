@@ -28,8 +28,9 @@ const Register = () => {
             text: "You Have Successfully Registerd !",
             icon: "success"
         });
-        logOut()
-        navigate("/login")
+        // logOut()
+        // navigate("/login")
+        navigate("/")
     }
 
     const errorRegister = () => {

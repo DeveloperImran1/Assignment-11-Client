@@ -103,25 +103,21 @@ const Navbar = () => {
                             Home<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                         </li>
                     </NavLink>
-
-                    <NavLink to="/allTouristSpot" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'leading-none dark:text-white'}  >
+                    <NavLink to="/rooms" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'leading-none dark:text-white'}  >
                         <li className="group flex  cursor-pointer flex-col">
-                            All Tourist Spot<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                            Rooms<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                         </li>
                     </NavLink>
+
                     {
                         user && <>
-                            <NavLink to="/rooms" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'leading-none dark:text-white'}  >
-                                <li className="group flex  cursor-pointer flex-col">
-                                    Rooms<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
-                                </li>
-                            </NavLink>
+
                             <NavLink to="/myBooking" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'leading-none dark:text-white'}  >
                                 <li className="group flex  cursor-pointer flex-col  ">
-                                My Booking<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                                    My Booking<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                                 </li>
                             </NavLink>
-                      
+
                             <NavLink to="/userProfile" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'leading-none dark:text-white'}  >
                                 <li className="group flex  cursor-pointer flex-col  ">
                                     Profile<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
@@ -154,21 +150,17 @@ const Navbar = () => {
                                     Home
                                 </li>
                             </NavLink>
-                            <NavLink to="/allTouristSpot" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+                            <NavLink to="/rooms" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
                                 <li className="group flex cursor-pointer flex-col pl-[20px]">
-                                    All Tourist Spots
+                                    Rooms
                                 </li>
                             </NavLink>
                             {
                                 user ? <>
-                                    <NavLink to="/addTouristSpot" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+
+                                    <NavLink to="/myBooking" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
                                         <li className="group flex cursor-pointer flex-col pl-[20px]">
-                                            Add Tourist Spot
-                                        </li>
-                                    </NavLink>
-                                    <NavLink to="/myList" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
-                                        <li className="group flex cursor-pointer flex-col pl-[20px]">
-                                            My List
+                                            My Booking
                                         </li>
                                     </NavLink>
                                     <NavLink to="/userProfile" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >

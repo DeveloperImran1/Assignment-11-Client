@@ -29,41 +29,42 @@ const Reviews = () => {
     const { user, currentRoom } = React.useContext(AuthContext)
     console.log("Review page a current user", currentRoom)
 
-  // react tostify
-  const reviewSuccess = () => {
-    toast.success("Successfully Posted Review!")
-}
+    // react tostify
+    const reviewSuccess = () => {
+        toast.success("Successfully Posted Review!")
+    }
 
     const [value, setValue] = React.useState(4);
     const [hover, setHover] = React.useState(-1);
     const rating = value;
     const email = user?.email;
+    const userName = user?.displayName;
     const photoURL = user?.photoURL;
     const date = new Date();
 
-// handle Review Post
-const handleReview = (e)=> {
-    e.preventDefault();
-    const message = e.target.message.value;
-    const reviewObj = {message, rating, email,photoURL, date }
-    console.log(reviewObj)
-    axios.post(`http://localhost:5000/reviews`, reviewObj)
-    .then(res => {
-        if(res.data.acknowledged){
-            reviewSuccess()
-            e.target.reset()
-        }
-    })
-}
+    // handle Review Post
+    const handleReview = (e) => {
+        e.preventDefault();
+        const message = e.target.message.value;
+        const reviewObj = { message, rating, email, photoURL, date, userName }
+        console.log(reviewObj)
+        axios.post(`http://localhost:5000/reviews`, reviewObj)
+            .then(res => {
+                if (res.data.acknowledged) {
+                    reviewSuccess()
+                    e.target.reset()
+                }
+            })
+    }
 
 
 
     return (
         <div className='bg-cover bg-no-repeat bg-fixed flex flex-col justify-center items-center relative ' style={{ backgroundImage: "url('https://i.ibb.co/5rWkNfC/r-architecture-2g-Dwl-Iim3-Uw-unsplash-800x533.jpg')" }}  >
 
-<div className='h-full w-full bg-gradient-to-r from-indigo-500 via-gray-800 to-pink-500 absolute opacity-40' >
+            <div className='h-full w-full bg-gradient-to-r from-indigo-500 via-gray-800 to-pink-500 absolute opacity-40' >
 
-</div>
+            </div>
 
             <div className="flex flex-col max-w-xl border-2 shadow-sm rounded-xl my-9 lg:p-12 z-50 dark:bg-gray-50 dark:text-gray-800">
                 <div className="flex flex-col items-center  w-full text-white">
@@ -100,7 +101,7 @@ const handleReview = (e)=> {
                     <form onSubmit={handleReview} className="flex text-white  flex-col w-full">
                         <label className="block mb-5 ">
                             <span className="mb-1">Full name</span>
-                            <input type="text"  value={user?.displayName}  placeholder="Your name" className="block w-full text-black  rounded-md shadow-sm focus:ring focus:ring-opacity-75 border-2  p-2 focus:dark:ring-violet-600 dark:bg-gray-100" />
+                            <input type="text" value={user?.displayName} placeholder="Your name" className="block w-full text-black  rounded-md shadow-sm focus:ring focus:ring-opacity-75 border-2  p-2 focus:dark:ring-violet-600 dark:bg-gray-100" />
                         </label>
                         <textarea required name="message" rows="3" placeholder="Message..." className="p-4 border-2 rounded-md resize-none text-black dark:text-gray-800 dark:bg-gray-50" spellcheck="false"></textarea>
                         <button type="submit" className="py-4 my-8 font-semibold rounded-md dark:text-gray-50 bg-violet-600">Leave feedback</button>

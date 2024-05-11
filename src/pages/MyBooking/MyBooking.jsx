@@ -23,7 +23,7 @@ const MyBooking = () => {
 
     useEffect(() => {
 
-        axios.get(`http://localhost:5000/bookingRoom/${user?.email}`)
+        axios.get(`http://localhost:5000/bookingRoom/${user?.email}`,  {withCredentials: true} )
             .then(res => {
                 console.log(res.data)
                 setMyRoom(res.data)

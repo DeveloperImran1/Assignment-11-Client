@@ -3,6 +3,7 @@
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/Firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -28,7 +29,7 @@ const AuthProvider = ({ children }) => {
     // login with github
     const githubProvider = new GithubAuthProvider();
     const signInGithub = () => {
-         setLoading(true);
+        setLoading(true);
         return signInWithPopup(auth, githubProvider);
     }
 
@@ -58,6 +59,23 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setLoading(false);
+
+            const loggedUser = { email: currentUser?.email };
+            // if user thakle token create korbo
+            if (currentUser) {
+                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+                    .then(res => {
+                        console.log("Token responce", res.data)
+                    })
+            }
+            else{
+                axios.post('http://localhost:5000/logout', loggedUser, {withCredentials: true})
+                .then(res => {
+                    console.log(res.data)
+                })
+            }
+
+
         });
 
         return () => {
@@ -66,7 +84,7 @@ const AuthProvider = ({ children }) => {
     }, []);
 
 
-console.log(" Current user: ", user)
+    console.log(" Current user: ", user)
 
 
     const authInfo = { register, login, user, logOut, signInGoogle, signInGithub, loading, handleUpdateProfile, setCurrentRoom, currentRoom }
