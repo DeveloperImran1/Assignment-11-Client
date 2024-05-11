@@ -33,13 +33,12 @@ const MyBooking = () => {
 
 
         // Normaly data load 
-
         // axios.get(`http://localhost:5000/bookingRoom/${user?.email}`,  {withCredentials: true} )
         //     .then(res => {
         //         console.log(res.data)
         //         setMyRoom(res.data)
         //     })
-    }, [user])
+    }, [user, url, axiosSecure])
 
 
     const { roomId, _id, Area, Location, PricePerNight, RoomImages, RoomTitle, Status, bookingDate, userEmail } = myRoom;
