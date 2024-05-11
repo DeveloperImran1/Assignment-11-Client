@@ -7,16 +7,35 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { removeHome, setHome } from "../../CustomHooks/LocasStorage";
+import { useState } from "react";
 
 
 const RoomsCard = ({ room }) => {
+    const [bookMark, setBookmark] = useState(false);
+
+
     const { _id, Area, Availability, Facilities, Location, PricePerNight, Reviews, RoomDescription, RoomImages
         , RoomSize, RoomTitle, SpecialOffers, Status, Utilities } = room;
-    console.log(_id)
+
+    const handleHomeAddLocalStorage = (home) => {
+        if (bookMark) {
+
+            removeHome(home);
+        }
+        else {
+            setHome(home)
+        }
+
+
+    }
+
+
+
     return (
 
 
-        <div className="mx-auto max-w-[350px] space-y-6 rounded-xl bg-white px-4 pb-8 pt-4 font-sans shadow-lg dark:bg-[#18181B]">
+        <div className="mx-auto max-w-[350px] space-y-6 rounded-xl bg-white px-4 pb-8 pt-4 font-sans shadow-lg  dark:bg-[#18181B]">
             <Link to={`/rooms/${_id}`} className="relative flex h-48 w-full justify-center lg:h-[280px] border-2">
                 <Swiper
                     // spaceBetween={30}
@@ -96,12 +115,12 @@ const RoomsCard = ({ room }) => {
                 <div className="flex justify-between" >
                     {/* <p className="text-xs font-semibold text-gray-400 md:text-sm">Per Night: {PricePerNight} </p> */}
                     <h1 className="w-[35%] text-[14px] font-bold tracking-wider text-sky-900 dark:text-[#289DFF] md:text-2xl"><sup className="text-[14px] font-black">$</sup>{PricePerNight}<sub className="text-sm tracking-tight">/night</sub></h1>
-                    <button className="rounded-xl bg-[#22c55e]  px-3 py-1 font-medium text-white duration-200 hover:bg-[#0095FF]/90">{`${Availability ? 'Available': 'Unavailable'}`}</button>
+                    <button className="rounded-xl bg-[#22c55e]  px-3 py-1 font-medium text-white duration-200 hover:bg-[#0095FF]/90">{`${Availability ? 'Available' : 'Unavailable'}`}</button>
                 </div>
             </div>
             <div className="flex flex-wrap items-center justify-evenly gap-6 text-sm md:text-base">
                 <Link to={`/rooms/${_id}`} >  <button className="rounded-lg bg-[#49B2FF] px-4 py-2 font-sans font-semibold text-white duration-300 hover:scale-105 hover:bg-sky-600">Buy now</button></Link>
-                <div className="flex items-center"><svg width={30} className="fill-transparent stroke-gray-500 stroke-2  hover:fill-red-500 hover:stroke-red-500 " viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style={{ cursor: 'pointer' }}> <g strokeWidth="0"></g> <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g> <g id="SVGRepo_iconCarrier"><path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path></g></svg></div>
+                <div onClick={() => handleHomeAddLocalStorage(room)} className="flex items-center"><svg onClick={() => setBookmark(!bookMark)} width={30} className={`fill-transparent stroke-gray-500 stroke-2  hover:fill-red-500 hover:stroke-red-500 ${bookMark && 'fill-red-500 stroke-red-500'}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style={{ cursor: 'pointer' }}> <g strokeWidth="0"></g> <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g> <g id="SVGRepo_iconCarrier"><path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path></g></svg></div>
 
             </div>
         </div>

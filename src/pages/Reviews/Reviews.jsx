@@ -6,6 +6,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useParams } from 'react-router-dom';
 
 const labels = {
     0.5: 'Useless',
@@ -42,11 +43,14 @@ const Reviews = () => {
     const photoURL = user?.photoURL;
     const date = new Date();
 
+    const { RoomId } = useParams();
+
+
     // handle Review Post
     const handleReview = (e) => {
         e.preventDefault();
         const message = e.target.message.value;
-        const reviewObj = { message, rating, email, photoURL, date, userName }
+        const reviewObj = { message, rating, email, photoURL, date, userName, RoomId }
         console.log(reviewObj)
         axios.post(`http://localhost:5000/reviews`, reviewObj)
             .then(res => {

@@ -9,6 +9,7 @@ import swal from "sweetalert";
 import DatePicker from "react-datepicker";
 import React from 'react';
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
 
 const MyBooking = () => {
     const { user, loading, setCurrentRoom } = useContext(AuthContext);
@@ -20,15 +21,27 @@ const MyBooking = () => {
     const [updateBookingDate, setUpdateBookingDate] = useState("")
     console.log(updateBookingDate)
 
+    const axiosSecure = useAxiosSecure();
+    const url = `/bookingRoom/${user?.email}`
 
     useEffect(() => {
-
-        axios.get(`http://localhost:5000/bookingRoom/${user?.email}`,  {withCredentials: true} )
+        // axiosSecure er maddhome data load
+        axiosSecure.get(url)
             .then(res => {
-                console.log(res.data)
-                setMyRoom(res.data)
+                setMyRoom(res?.data)
             })
+
+
+        // Normaly data load 
+
+        // axios.get(`http://localhost:5000/bookingRoom/${user?.email}`,  {withCredentials: true} )
+        //     .then(res => {
+        //         console.log(res.data)
+        //         setMyRoom(res.data)
+        //     })
     }, [user])
+
+
     const { roomId, _id, Area, Location, PricePerNight, RoomImages, RoomTitle, Status, bookingDate, userEmail } = myRoom;
     const updateAvailability = { Availability: true };
     // delete spots 
@@ -44,20 +57,20 @@ const MyBooking = () => {
                 if (willDelete) {
                     axios.delete(`http://localhost:5000/bookingRoom/${room._id}`)
                         .then(res => {
-                            if(res.data.deletedCount){
+                            if (res.data.deletedCount) {
                                 axios.put(`http://localhost:5000/rooms/${room.roomId}`, updateAvailability)
-                                .then(res => {
-                                    console.log(res.data)
-                                    if (res.data.modifiedCount) {
-                                        swal("Successfully Booked This Room", {
-                                            icon: "success",
-                                        });
-                                    }
-                                })
+                                    .then(res => {
+                                        console.log(res.data)
+                                        if (res.data.modifiedCount) {
+                                            swal("Successfully Booked This Room", {
+                                                icon: "success",
+                                            });
+                                        }
+                                    })
                             }
                         })
 
-                
+
                 } else {
                     swal("Your imaginary Post is safe!");
                 }
@@ -65,51 +78,51 @@ const MyBooking = () => {
 
     }
 
-    const handleUpdate = (id)=> {
+    const handleUpdate = (id) => {
 
         Swal.fire({
-            title: "Borrow",
+            title: "Need Update",
             html:
-              '<label for="returnDate">Return Date:</label>' +
-              '<input id="returnDate" class="swal2-input" type="date" placeholder="Return Date">',
+                '<label for="returnDate">Return Date:</label>' +
+                '<input id="returnDate" class="swal2-input" type="date" placeholder="Update Date">',
             focusConfirm: false,
             showCancelButton: true,
-            confirmButtonText: "Submit",
+            confirmButtonText: "Update",
             preConfirm: () => {
-              const returnDate = Swal.getPopup().querySelector("#returnDate").value;
-              if (!returnDate) {
-                Swal.showValidationMessage("Return date is required");
-              }
-              return { returnDate: returnDate };
+                const returnDate = Swal.getPopup().querySelector("#returnDate").value;
+                if (!returnDate) {
+                    Swal.showValidationMessage("Please Pice a Date");
+                }
+                return { returnDate: returnDate };
             },
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              const returnDate = result.value.returnDate;
-              // Handle submission, e.g., send returnDate to backend
-              console.log("Borrowing with return date:", returnDate);
-              setUpdateBookingDate(returnDate)
+                const returnDate = result.value.returnDate;
+                // Handle submission, e.g., send returnDate to backend
+                console.log("Borrowing with return date:", returnDate);
+                setUpdateBookingDate(returnDate)
 
-              axios.put(`http://localhost:5000/bookingRoom/${id}`, {updateBookingDate} )
-              .then(res => {
-                  if(res.data.modifiedCount){
-                    swal({
-                        title: "Updatd",
-                        text: "Your Booking Date Updated",
-                        icon: "success",
-                        button: "Close",
-                      });
-                  }
-              })
-             
+                axios.put(`http://localhost:5000/bookingRoom/${id}`, { updateBookingDate })
+                    .then(res => {
+                        if (res.data.modifiedCount) {
+                            swal({
+                                title: "Updatd",
+                                text: "Your Booking Date Updated",
+                                icon: "success",
+                                button: "Close",
+                            });
+                        }
+                    })
+
             }
-          });
-          
+        });
 
 
-     
+
+
     }
 
-    
+
 
     if (loading) {
         return "Loading......."
@@ -159,11 +172,11 @@ const MyBooking = () => {
 
                                 <td className="">
                                     <Link  >
-                                        <button onClick={()=> handleUpdate(room?._id)} className="btn btn-sm ml-2 bg-[#FF5400]"><MdOutlineUpdate /></button>
+                                        <button onClick={() => handleUpdate(room?._id)} className="btn btn-sm ml-2 bg-[#FF5400]"><MdOutlineUpdate /></button>
                                     </Link>
                                 </td>
                                 <td className="">
-                                    <Link to="/userReview">
+                                    <Link to={`/userReview/${room?.roomId}`}>
                                         <button onClick={() => setCurrentRoom(room)} className="btn btn-sm ml-2 bg-[#FF5400]"><FaRegEdit /></button>
                                     </Link>
                                 </td>
