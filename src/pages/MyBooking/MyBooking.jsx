@@ -11,7 +11,8 @@ import React from 'react';
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
 import { useMutation, useQuery } from "@tanstack/react-query";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // for material ur dialog
 
@@ -27,6 +28,9 @@ import {
     Checkbox,
 } from "@material-tailwind/react";
 
+const deleteError = () => {
+    toast.error("Sorry! One Day Before Not Delete Rooms")
+}
 
 const MyBooking = () => {
     const { user, loading, setCurrentRoom } = useContext(AuthContext);
@@ -76,8 +80,18 @@ const MyBooking = () => {
 
     const { roomId, _id, Area, Location, PricePerNight, RoomImages, RoomTitle, Status, bookingDate, userEmail } = myRoom;
     const updateAvailability = { Availability: true };
+
+
     // delete spots 
-    const handleDelete = room => {
+    const handleDelete = (room, date) => {
+        const bookDate = new Date(date).getTime();
+        const todayDate = new Date().getTime();
+        const compareDate = todayDate - bookDate;
+        if (compareDate < 86400000) {
+            return deleteError()
+        }
+     
+
         swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover this imaginary Post!",
@@ -92,7 +106,7 @@ const MyBooking = () => {
                             if (res.data.deletedCount) {
                                 console.log(res.data)
                                 mutateAsync(room)
-                  
+
                             }
                         })
 
@@ -109,6 +123,7 @@ const MyBooking = () => {
         axios.put(`http://localhost:5000/bookingRoom/${id}`, { updateBookingDate })
             .then(res => {
                 if (res.data.modifiedCount) {
+                    console.log(res.data)
                     refetch();
                     swal({
                         title: "Updatd",
@@ -159,22 +174,22 @@ const MyBooking = () => {
                             <tr className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
                                 <th>{i + 1}</th>
                                 <td className="p-3">
-                                    <img className="size-[80px] bg-slate-500 object-cover rounded-lg hover:blur-[2px] duration-500" src="https://source.unsplash.com/300x300/?profile" alt="avatar navigate ui" />
+                                    <img className="size-[80px] bg-slate-500 object-cover rounded-lg hover:blur-[2px] duration-500" src={`${room?.RoomImages?.[0] || "https://i.ibb.co/k3LwX3C/folio-img2-1-1536x960.jpg"}`} alt="avatar navigate ui" />
 
                                 </td>
 
                                 <td className="p-3">
-                                    <p>$ {room.PricePerNight}</p>
+                                    <p>$ {room?.PricePerNight}</p>
 
                                 </td>
                                 <td className="p-3">
-                                    <p>{room.bookingDate}</p>
+                                    <p>{new Date(room?.bookingDate).toLocaleDateString()}</p>
 
                                 </td>
 
                                 <td className="">
                                     <Link  >
-                                      
+
                                         <button onClick={handleOpen} className="btn btn-sm ml-2 bg-[#FF5400]"><MdOutlineUpdate /></button>
                                     </Link>
                                 </td>
@@ -184,26 +199,28 @@ const MyBooking = () => {
                                     </Link>
                                 </td>
                                 <td className="">
-                                    <button onClick={() => handleDelete(room)} className="btn btn-sm ml-2 btn-warning"> <MdDeleteForever /></button>
+                                    <button onClick={() => handleDelete(room, room?.bookingDate)} className="btn btn-sm ml-2 btn-warning"> <MdDeleteForever /></button>
                                 </td>
                             </tr>
 
                             <Dialog
                                 size="xs"
                                 open={open}
-                                handler={handleOpen}
+                                // handler={handleOpen}
                                 className="bg-transparent shadow-none"
                             >
                                 <Card className="mx-auto w-full max-w-[24rem]">
                                     <CardBody className="flex flex-col gap-4">
 
                                         <Typography className="-mb-2" variant="h6">
-                                            Pick a Date
+                                            Pick a Update Date
                                         </Typography>
                                         <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 border border-[#5A5A5D] p-2 focus:dark:ring-violet-600 dark:bg-gray-100" />
-
+                                        <div>
+                                            <img src={`${room?.RoomImages?.[0] || "https://i.ibb.co/k3LwX3C/folio-img2-1-1536x960.jpg"}`} alt="" />
+                                        </div>
                                         <div className="-ml-2.5 -mt-3">
-                                            <Checkbox label="Remember Me" />
+                                            <Checkbox required label="Remember Me" />
                                         </div>
                                     </CardBody>
                                     <CardFooter onClick={() => handleUpdate(room?._id)} className="pt-0">

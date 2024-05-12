@@ -8,11 +8,13 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { removeHome, setHome } from "../../CustomHooks/LocasStorage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 const RoomsCard = ({ room }) => {
     const [bookMark, setBookmark] = useState(false);
+    const [clients, setClients] = useState([])
 
 
     const { _id, Area, Availability, Facilities, Location, PricePerNight, Reviews, RoomDescription, RoomImages
@@ -29,7 +31,14 @@ const RoomsCard = ({ room }) => {
 
 
     }
-
+   // get review for this room
+   useEffect(() => {
+    axios(`http://localhost:5000/review/${_id}`)
+        .then(res => {
+            console.log(res.data)
+            setClients(res.data)
+        })
+}, [_id])
 
 
     return (
@@ -118,7 +127,7 @@ const RoomsCard = ({ room }) => {
                 </div>
                 <div className="flex justify-between" >
                     <h1 className="w-[35%] text-[14px] text-gray-800 font-bold tracking-wider text-sky-900 dark:text-[#289DFF] md:text-2xl"><sup className="text-[14px] font-black">$</sup>{PricePerNight}<sub className="text-sm tracking-tight">/night</sub></h1>
-                    <p className="px-3 py-1 h-7 text-xs text-pink-500 rounded-full dark:bg-gray-800 bg-pink-100/60">Marketing</p>
+                    <p className="px-3 py-1 h-7 text-xs text-pink-500 rounded-full dark:bg-gray-800 bg-pink-100/60">Total Review {clients?.length}</p>
                 </div>
             </div>
             <div className="flex mx-auto flex-wrap w-[90%] items-center justify-between gap-6 text-sm md:text-base">

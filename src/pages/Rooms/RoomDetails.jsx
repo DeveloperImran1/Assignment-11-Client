@@ -10,7 +10,7 @@ import { MdBookmarkAdd } from "react-icons/md";
 
 import "leaflet/dist/leaflet.css"; // Import Leaflet CSS
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FcElectricity } from "react-icons/fc";
 
 
@@ -30,6 +30,7 @@ import { useQuery } from "@tanstack/react-query";
 import { removeHome, setHome } from "../../CustomHooks/LocasStorage";
 import Marquee from "react-fast-marquee";
 import SatisfiedClientCard from "../Home/SatisfiedClientCard";
+import { BsEmojiHeartEyes } from "react-icons/bs";
 
 
 
@@ -41,18 +42,12 @@ const RoomDetails = () => {
     const [startDate, setStartDate] = useState(new Date());
     const bookingDate = new Date(startDate).toLocaleDateString();
     const [bookMark, setBookmark] = useState(false);
-
+    const navigate = useNavigate();
 
     // user review
     const [clients, setClients] = useState([]);
 
-    useEffect(() => {
-        axios(`http://localhost:5000/reviews`)
-            .then(res => {
-                console.log(res.data)
-                setClients(res.data)
-            })
-    })
+
 
     // react tostify
     const bookingError = () => {
@@ -61,6 +56,8 @@ const RoomDetails = () => {
     const loginMessage = () => {
         toast.error("Please Login Before Booking!")
     }
+
+
 
 
     // tantak query dia fetch
@@ -80,6 +77,15 @@ const RoomDetails = () => {
     const bookignData = { roomId: _id, Area, Location, PricePerNight, RoomImages, RoomTitle, Status, bookingDate, userEmail };
     const updateAvailability = { Availability: false };
 
+    // get review for this room
+    useEffect(() => {
+        axios(`http://localhost:5000/review/${_id}`)
+            .then(res => {
+                console.log(res.data)
+                setClients(res.data)
+            })
+    }, [])
+
     const handleHomeAddLocalStorage = (home) => {
         if (bookMark) {
 
@@ -95,14 +101,15 @@ const RoomDetails = () => {
 
     const handleBooking = (e) => {
         e.preventDefault()
-        if(!user){
+        if (!user) {
+            navigate("/login")
             return loginMessage()
         }
-        
+
         if (!Availability) {
             return bookingError()
         }
-       
+
 
         swal({
             title: "Are You Sure?",
@@ -302,19 +309,20 @@ const RoomDetails = () => {
                             </div>
                         </div>
                         {
-                            user && <section className="my-[40px]" >
+                            user &&
+                                clients?.length < 1 ? <h1 className="text-[40px] font-bold text-[#131313] text-center w-full flex justify-center items-center"><span>No Review This Room</span> <BsEmojiHeartEyes className="text-[#ff00ff]" size={30} />  </h1> : <section className="my-[40px]" >
                                 <div className="container  mx-auto space-y-8">
                                     <div className="space-y-2 text-center">
                                         <h1
                                             data-aos="fade-right"
                                             data-aos-offset="300"
                                             data-aos-easing="ease-in-sine"
-                                            className="text-[40px] font-bold text-[#131313] text-center w-full "> Our Satisfied Clients</h1>
+                                            className="text-[40px] font-bold text-[#131313] text-center w-full "> Our Satisfied Clients {clients?.length} </h1>
                                         <p
                                             data-aos="fade-left"
                                             data-aos-offset="300"
                                             data-aos-easing="ease-in-sine"
-                                            className=" text-[16px] text-[#131313CC] text-center mb-12 w-full lg:w-[80%] mx-auto ">At Haven House, our residents satisfaction is our top priority. Dont just take our word for it – hear what some of our happy residents have to say... </p>
+                                            className=" text-[16px] text-[#131313CC] text-center mb-12 w-full lg:w-[80%] mx-auto ">At Haven House, our residents satisfaction is our top priority. Dont just take our word for it hear what some of our happy residents have to say... </p>
 
 
                                         <Marquee className="w-full h-[470px]" autoFill="false" pauseOnHover="true" speed="100">
