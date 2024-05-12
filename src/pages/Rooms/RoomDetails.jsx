@@ -28,6 +28,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useQuery } from "@tanstack/react-query";
 import { removeHome, setHome } from "../../CustomHooks/LocasStorage";
+import Marquee from "react-fast-marquee";
+import SatisfiedClientCard from "../Home/SatisfiedClientCard";
+
 
 
 
@@ -40,30 +43,34 @@ const RoomDetails = () => {
     const [bookMark, setBookmark] = useState(false);
 
 
+    // user review
+    const [clients, setClients] = useState([]);
+
+    useEffect(() => {
+        axios(`http://localhost:5000/reviews`)
+            .then(res => {
+                console.log(res.data)
+                setClients(res.data)
+            })
+    })
 
     // react tostify
     const bookingError = () => {
         toast.error("Not Available This Room!")
     }
-
-    // normaly data fetch
-    // useEffect(() => {
-
-    //     axios(`http://localhost:5000/rooms/${id}`)
-    //         .then(res => {
-    //             console.log(res.data)
-    //             setRoom(res.data)
-    //         })
-    // }, [])
-
-// tantak query dia fetch
-const { isPending, isError, error, data: room = {}, refetch } = useQuery({
-    queryKey: ["rooms"],
-    queryFn: async () => {
-        const res = await fetch(`http://localhost:5000/rooms/${id}`);
-        return res.json()
+    const loginMessage = () => {
+        toast.error("Please Login Before Booking!")
     }
-})
+
+
+    // tantak query dia fetch
+    const { isPending, isError, error, data: room = {}, refetch } = useQuery({
+        queryKey: ["singleRoom"],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/rooms/${id}`);
+            return res.json()
+        }
+    })
 
 
     const { _id, Area, Availability, Facilities, Location, PricePerNight, Reviews, RoomDescription, RoomImages
@@ -88,10 +95,15 @@ const { isPending, isError, error, data: room = {}, refetch } = useQuery({
 
     const handleBooking = (e) => {
         e.preventDefault()
+        if(!user){
+            return loginMessage()
+        }
+        
         if (!Availability) {
             return bookingError()
         }
-    
+       
+
         swal({
             title: "Are You Sure?",
             text: "This Room You Booking!",
@@ -159,8 +171,8 @@ const { isPending, isError, error, data: room = {}, refetch } = useQuery({
                     </div>
                     <div className="flex mt-4 -mb-4 gap-6">
                         <p className="text-[20px] font-semibold">{RoomTitle}</p>
-                        <div onClick={()=> setBookmark(!bookMark)} className="bg-primary p-3  ml-5 mr-8 rounded-full hover:bg-opacity-30 bg-opacity-20 cursor-pointer hover:scale-105 overflow-hidden">
-                            <MdBookmarkAdd size={20} onClick={()=> handleHomeAddLocalStorage(room)} className="text-secondary"></MdBookmarkAdd>
+                        <div onClick={() => setBookmark(!bookMark)} className="bg-primary p-3  ml-5 mr-8 rounded-full hover:bg-opacity-30 bg-opacity-20 cursor-pointer hover:scale-105 overflow-hidden">
+                            <MdBookmarkAdd size={20} onClick={() => handleHomeAddLocalStorage(room)} className="text-secondary"></MdBookmarkAdd>
                         </div>
 
                     </div>
@@ -216,22 +228,20 @@ const { isPending, isError, error, data: room = {}, refetch } = useQuery({
                                     <TabPanel>
                                         <form onSubmit={handleBooking} className="flex flex-col px-6 py-8  space-y-6  w-full border-2 border-[#5A5A5D] rounded-[16px] ">
                                             <div>
-                                                <img alt="" className="w-[400px] h-full  rounded shadow-sm col-span-2 row-span-2  dark:bg-gray-500 " src={`https://i.ibb.co/k3LwX3C/folio-img2-1-1536x960.jpg`} />
+                                                <img alt="" className="w-[500px] h-full  rounded shadow-sm col-span-2 row-span-2  dark:bg-gray-500 " src={`https://i.ibb.co/k3LwX3C/folio-img2-1-1536x960.jpg`} />
                                                 <p className="text-[24px] font-semibold  text-center mt-5 ">Please Fillup This Form </p>
                                             </div>
-                                            <div className="flex justify-between  items-center" >
+
+                                            <div className="flex">
                                                 <label className="block">
                                                     <span className="mb-1">Full name</span>
                                                     <input type="text" placeholder="Your name" value={user?.displayName} className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 border border-[#5A5A5D] p-2 focus:dark:ring-violet-600 dark:bg-gray-100" />
                                                 </label>
-                                                <div className="flex flex-col items-center justify-end" >
-                                                    <label className="block">
-                                                        <span className="mb-1">Booking Date </span>
-                                                        {/* <input type="text" placeholder="Your name" value={`$ ${PricePerNight}`} className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 border border-[#5A5A5D] p-2 focus:dark:ring-violet-600 dark:bg-gray-100" /> */}
-                                                        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 border border-[#5A5A5D] p-2 focus:dark:ring-violet-600 dark:bg-gray-100" />
-                                                    </label>
-                                                </div>
 
+                                                <label className="block">
+                                                    <span className="mb-1">Booking Date</span>
+                                                    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 border border-[#5A5A5D] p-2 focus:dark:ring-violet-600 dark:bg-gray-100" />
+                                                </label>
                                             </div>
                                             <label className="block">
                                                 <span className="mb-1">Email</span>
@@ -247,7 +257,7 @@ const { isPending, isError, error, data: room = {}, refetch } = useQuery({
                                                 <input type="text" placeholder="Your name" value={`$ ${PricePerNight}`} className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 border border-[#5A5A5D] p-2 focus:dark:ring-violet-600 dark:bg-gray-100" />
                                             </label>
 
-                                            <button className="rounded-lg border-2 border-sky-500 px-8 py-3 text-xl text-sky-500 duration-200 hover:bg-sky-500 hover:text-white">Book Now</button>
+                                            <button className="rounded-lg border-2 border-sky-500 px-8 py-3 text-xl text-sky-500 duration-200 hover:bg-[#199fff] hover:text-white">Book Now</button>
 
 
 
@@ -291,6 +301,33 @@ const { isPending, isError, error, data: room = {}, refetch } = useQuery({
 
                             </div>
                         </div>
+                        {
+                            user && <section className="my-[40px]" >
+                                <div className="container  mx-auto space-y-8">
+                                    <div className="space-y-2 text-center">
+                                        <h1
+                                            data-aos="fade-right"
+                                            data-aos-offset="300"
+                                            data-aos-easing="ease-in-sine"
+                                            className="text-[40px] font-bold text-[#131313] text-center w-full "> Our Satisfied Clients</h1>
+                                        <p
+                                            data-aos="fade-left"
+                                            data-aos-offset="300"
+                                            data-aos-easing="ease-in-sine"
+                                            className=" text-[16px] text-[#131313CC] text-center mb-12 w-full lg:w-[80%] mx-auto ">At Haven House, our residents satisfaction is our top priority. Dont just take our word for it – hear what some of our happy residents have to say... </p>
+
+
+                                        <Marquee className="w-full h-[470px]" autoFill="false" pauseOnHover="true" speed="100">
+
+
+                                            {
+                                                clients.map(client => <SatisfiedClientCard key={client} client={client} ></SatisfiedClientCard>)
+                                            }
+                                        </Marquee>
+                                    </div>
+                                </div>
+                            </section>
+                        }
                         {/* react leaflet */}
                         <div>
                             <div className="mt-14 mb-5">

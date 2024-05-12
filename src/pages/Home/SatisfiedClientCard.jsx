@@ -19,9 +19,10 @@ const SatisfiedClientCard = ({ client }) => {
                             <span className="text-xl font-bold">{`${rating || 5}`}</span>
                         </div>
                     </div>
-                    <h3 className="flex-1 py-2 text-lg font-normal leading-snug">{message?.slice(0, 37)}</h3>
+                    <h3 className="flex-1 py-2 text-lg text-left font-normal leading-snug">{message?.slice(0, 37)}</h3>
                     <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs ">
                         <span>{new Date(date).toLocaleDateString()}</span>
+                        <span>{email}</span>
 
                     </div>
                 </div>

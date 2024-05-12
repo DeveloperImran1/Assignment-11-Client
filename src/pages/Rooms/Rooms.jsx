@@ -12,18 +12,9 @@ import RoomTableView from "./RoomTableView";
 import { Link, useLocation } from "react-router-dom";
 import { FaHandHoldingWater } from "react-icons/fa";
 import { FcElectricity } from "react-icons/fc";
+import LoadingCard from "../../components/LoadingCard";
 
 const Rooms = () => {
-    // const [allRooms, setRooms] = useState([]);
-    // normal fetch 
-    // useEffect(() => {
-
-    //     axios("http://localhost:5000/rooms")
-    //         .then(res => {
-    //             console.log(res.data)
-    //             setRooms(res.data)
-    //         })
-    // }, [])
 
     // tantak query dia fetching
 
@@ -32,6 +23,7 @@ const Rooms = () => {
     const [availableRooms, setAvailableRooms] = useState([]);
     const [specialOffer, setSpecialOffers] = useState([]);
     const [sort, setSort] = useState("");
+
     const url = `http://localhost:5000/rooms?sort=${sort}`;
     const { isPending, isError, error, data: allRooms = [], refetch } = useQuery({
         queryKey: ["rooms"],
@@ -42,28 +34,28 @@ const Rooms = () => {
     })
     useEffect(() => {
         refetch()
-        // const available = allRooms.length && allRooms?.filter(room => room?.Availability === true) ;
-        setAvailableRooms(allRooms)
-        const offers = allRooms?.filter(room => room?.SpecialOffers);
-        setSpecialOffers(offers)
-    }, [pathname, allRooms, url])
 
-    console.log("tantak er users", allRooms)
+    }, [pathname, sort, refetch])
+
+    useEffect(() => {
+
+        if (allRooms.length > 0) {
+            const available = allRooms?.filter(room => room?.Availability === true);
+            setAvailableRooms(available)
+            const offers = allRooms?.filter(room => room?.SpecialOffers);
+            setSpecialOffers(offers)
+
+            console.log("tantak er allRooms", allRooms, "available rooms", availableRooms, "specialOfer", specialOffer)
+
+        }
+
+    }, [allRooms, availableRooms, specialOffer])
+    // console.log("all Rooms latest", allRooms)
 
     if (isPending) {
-        return <div className=" p-6 rounded-md bg-white shadow-md mx-auto max-w-fit">
-            <div className="animate-pulse">
-                {/* Product Image Skeleton */}
-                <div className="w-[300px] lg:h-52 md:h-52 h-48 rounded-lg bg-gray-300 mb-6"></div>
-                {/* Product Title Skeleton */}
-                <div className="w-[290px] h-4 rounded-lg bg-gray-300 mb-4"></div>
-                {/* product heading skeleton */}
-                <div className="w-[220px] h-4 rounded-lg bg-gray-300 mb-4"></div>
-                {/* Product Description Skeleton */}
-                <div className="w-[200px] h-4 rounded-lg bg-gray-300 mb-4"></div>
-            </div>
-        </div>
+        return <LoadingCard></LoadingCard>
     }
+
 
 
     return (
@@ -121,14 +113,14 @@ const Rooms = () => {
                     <TabPanel>
                         <div className="grid grid-cols-3 gap-5" >
                             {
-                                allRooms.map(room => <RoomsCard key={room._id} room={room}  ></RoomsCard>)
+                                allRooms && allRooms?.map(room => <RoomsCard key={room._id} room={room}  ></RoomsCard>)
                             }
                         </div>
                     </TabPanel>
                     <TabPanel>
                         <div className="grid grid-cols-3 gap-5" >
                             {
-                                availableRooms?.map(room => <RoomsCard key={room?._id} room={room}  ></RoomsCard>)
+                                allRooms && availableRooms?.map(room => <RoomsCard key={room?._id} room={room}  ></RoomsCard>)
                             }
                         </div>
                     </TabPanel>
