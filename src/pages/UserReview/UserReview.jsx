@@ -26,8 +26,8 @@ const UserReview = () => {
     }, [])
 
 
-const reviewTime = moment(reviews?.[0]?.date).endOf('day').fromNow(); 
-console.log(reviewTime)
+    const reviewTime = moment(reviews?.[0]?.date).endOf('day').fromNow();
+    console.log(reviewTime)
 
     return (
         <div>
@@ -54,7 +54,7 @@ console.log(reviewTime)
                                             <img src={`${review?.photoURL}`} alt="" className="object-cover w-12 h-12 rounded-full dark:bg-gray-500" />
                                         </div>
                                         <div>
-                                            <h4 className="font-bold">{`${review?.userName  || ""}`}</h4>
+                                            <h4 className="font-bold">{`${review?.userName || ""}`}</h4>
                                             <span className="text-xs dark:text-gray-600">{moment(review?.date).endOf('day').fromNow()}</span>
                                         </div>
                                     </div>
@@ -69,7 +69,7 @@ console.log(reviewTime)
                                 <div className="p-4 space-y-2 text-sm dark:text-gray-600">
                                     <p>{review?.message}</p>
                                     <p>Donec eget ultricies diam, eu molestie arcu. Etiam nec lacus eu mauris cursus venenatis. Maecenas gravida urna vitae accumsan feugiat. Vestibulum commodo, ante sit urna purus rutrum sem.</p>
-                                    <p className='text-[17px] font-semibold text-black' >{`${review?.email || ""}` }</p>
+                                    <p className='text-[17px] font-semibold text-black' >{`${review?.email || ""}`}</p>
                                 </div>
                             </div>
                         </SwiperSlide>

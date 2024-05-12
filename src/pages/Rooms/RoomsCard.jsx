@@ -110,15 +110,18 @@ const RoomsCard = ({ room }) => {
 
 
             </Link>
-            <div className="mx-auto w-[85%] space-y-2 text-center font-semibold">
-                <h6 className="text-sm md:text-base lg:text-lg">{RoomTitle}</h6>
+            <div className="mx-auto w-[90%] space-y-2  font-semibold">
+                <div className="flex justify-between">
+                    <h6 className="text-sm md:text-base text-gray-800 lg:text-lg">{RoomTitle}</h6>
+                    <p className="px-3 h-6 py-1 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60">{`${Availability ? 'Available' : 'Unavailable'}`}</p>
+
+                </div>
                 <div className="flex justify-between" >
-                    {/* <p className="text-xs font-semibold text-gray-400 md:text-sm">Per Night: {PricePerNight} </p> */}
-                    <h1 className="w-[35%] text-[14px] font-bold tracking-wider text-sky-900 dark:text-[#289DFF] md:text-2xl"><sup className="text-[14px] font-black">$</sup>{PricePerNight}<sub className="text-sm tracking-tight">/night</sub></h1>
-                    <button className="rounded-xl bg-[#22c55e]  px-3 py-1 font-medium text-white duration-200 hover:bg-[#0095FF]/90">{`${Availability ? 'Available' : 'Unavailable'}`}</button>
+                    <h1 className="w-[35%] text-[14px] text-gray-800 font-bold tracking-wider text-sky-900 dark:text-[#289DFF] md:text-2xl"><sup className="text-[14px] font-black">$</sup>{PricePerNight}<sub className="text-sm tracking-tight">/night</sub></h1>
+                    <p className="px-3 py-1 h-7 text-xs text-pink-500 rounded-full dark:bg-gray-800 bg-pink-100/60">Marketing</p>
                 </div>
             </div>
-            <div className="flex flex-wrap items-center justify-evenly gap-6 text-sm md:text-base">
+            <div className="flex mx-auto flex-wrap w-[90%] items-center justify-between gap-6 text-sm md:text-base">
                 <Link to={`/rooms/${_id}`} >  <button className="rounded-lg bg-[#49B2FF] px-4 py-2 font-sans font-semibold text-white duration-300 hover:scale-105 hover:bg-sky-600">Buy now</button></Link>
                 <div onClick={() => handleHomeAddLocalStorage(room)} className={`flex items-center `}><svg onClick={() => setBookmark(!bookMark)} width={30} className={`fill-transparent stroke-gray-500 stroke-2  hover:fill-red-500 hover:stroke-red-500 ${bookMark && "stroke-red-500 fill-red-500"}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style={{ cursor: 'pointer' }}> <g strokeWidth="0"></g> <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g> <g id="SVGRepo_iconCarrier"><path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path></g></svg></div>
 
