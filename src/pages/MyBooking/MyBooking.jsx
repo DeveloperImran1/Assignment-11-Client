@@ -10,35 +10,68 @@ import DatePicker from "react-datepicker";
 import React from 'react';
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
+import { useMutation, useQuery } from "@tanstack/react-query";
+
+
+// for material ur dialog
+
+import {
+    Button,
+    Dialog,
+    Card,
+    CardHeader,
+    CardBody,
+    CardFooter,
+    Typography,
+    Input,
+    Checkbox,
+} from "@material-tailwind/react";
+
 
 const MyBooking = () => {
     const { user, loading, setCurrentRoom } = useContext(AuthContext);
-    const [myRoom, setMyRoom] = useState([])
+    // const [myRoom, setMyRoom] = useState([])
     const [startDate, setStartDate] = useState(new Date());
 
 
-    // const updateBookingDate = new Date(startDate).toLocaleDateString();
-    const [updateBookingDate, setUpdateBookingDate] = useState("")
-    console.log(updateBookingDate)
+    const updateBookingDate = startDate;
+    console.log("Modaler date", updateBookingDate)
+
+
+    // for modal materialui
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen((cur) => !cur);
+
 
     const axiosSecure = useAxiosSecure();
     const url = `/bookingRoom/${user?.email}`
 
-    useEffect(() => {
-        // axiosSecure er maddhome data load
-        axiosSecure.get(url)
-            .then(res => {
-                setMyRoom(res?.data)
-            })
 
+    //----------------------------->>> tantak query and axiosSecure
 
-        // Normaly data load 
-        // axios.get(`http://localhost:5000/bookingRoom/${user?.email}`,  {withCredentials: true} )
-        //     .then(res => {
-        //         console.log(res.data)
-        //         setMyRoom(res.data)
-        //     })
-    }, [user, url, axiosSecure])
+    const { data: myRoom = [], isLoading, refetch, isError, error } = useQuery({
+        queryFn: () => getData(),
+        queryKey: ['rooms', user?.email]   // 2nd index a jodi dependency dita pari. mane user?.email asle abar refetch hobe. ex:  queryKey: ['rooms', user?.email] 
+    })
+    console.log(myRoom)
+    const getData = async () => {
+        const { data } = await axiosSecure(url)
+        return data;
+    }
+
+    // data update korar jonno useMutation function use korbo
+    const { mutateAsync } = useMutation({
+        mutationFn: async (room) => {
+            const { data } = await axios.put(`http://localhost:5000/rooms/${room.roomId}`, updateAvailability)
+            console.log(data)
+        },
+        onSuccess: () => {
+            swal("Successfully Booked This Room", {
+                icon: "success",
+            });
+            refetch();
+        }
+    })
 
 
     const { roomId, _id, Area, Location, PricePerNight, RoomImages, RoomTitle, Status, bookingDate, userEmail } = myRoom;
@@ -57,15 +90,9 @@ const MyBooking = () => {
                     axios.delete(`http://localhost:5000/bookingRoom/${room._id}`)
                         .then(res => {
                             if (res.data.deletedCount) {
-                                axios.put(`http://localhost:5000/rooms/${room.roomId}`, updateAvailability)
-                                    .then(res => {
-                                        console.log(res.data)
-                                        if (res.data.modifiedCount) {
-                                            swal("Successfully Booked This Room", {
-                                                icon: "success",
-                                            });
-                                        }
-                                    })
+                                console.log(res.data)
+                                mutateAsync(room)
+                  
                             }
                         })
 
@@ -78,57 +105,33 @@ const MyBooking = () => {
     }
 
     const handleUpdate = (id) => {
-
-        Swal.fire({
-            title: "Need Update",
-            html:
-                '<label for="returnDate">Return Date:</label>' +
-                '<input id="returnDate" class="swal2-input" type="date" placeholder="Update Date">',
-            focusConfirm: false,
-            showCancelButton: true,
-            confirmButtonText: "Update",
-            preConfirm: () => {
-                const returnDate = Swal.getPopup().querySelector("#returnDate").value;
-                if (!returnDate) {
-                    Swal.showValidationMessage("Please Pice a Date");
+        console.log("dialog theke asa id", id)
+        axios.put(`http://localhost:5000/bookingRoom/${id}`, { updateBookingDate })
+            .then(res => {
+                if (res.data.modifiedCount) {
+                    refetch();
+                    swal({
+                        title: "Updatd",
+                        text: "Your Booking Date Updated",
+                        icon: "success",
+                        button: "Close",
+                    });
                 }
-                return { returnDate: returnDate };
-            },
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const returnDate = result.value.returnDate;
-                // Handle submission, e.g., send returnDate to backend
-                console.log("Borrowing with return date:", returnDate);
-                setUpdateBookingDate(returnDate)
-
-                axios.put(`http://localhost:5000/bookingRoom/${id}`, { updateBookingDate })
-                    .then(res => {
-                        if (res.data.modifiedCount) {
-                            swal({
-                                title: "Updatd",
-                                text: "Your Booking Date Updated",
-                                icon: "success",
-                                button: "Close",
-                            });
-                        }
-                    })
-
-            }
-        });
-
-
-
-
+            })
     }
-
 
 
     if (loading) {
         return "Loading......."
     }
+    if (isLoading) {
+        return "tantak er  Loading......."
+    }
 
     return (
         <div>
+
+
 
             <h1 className="text-xl mg:text-2xl lg:text-3xl font-bold text-center leading-none dark:text-gray-600 mb-3 ">My added List</h1>
 
@@ -152,7 +155,7 @@ const MyBooking = () => {
                         </tr>
                     </thead>
                     {
-                        myRoom.map((room, i) => <tbody key={room._id}>
+                        myRoom.map((room, i) => <tbody key={room?._id}>
                             <tr className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
                                 <th>{i + 1}</th>
                                 <td className="p-3">
@@ -171,7 +174,8 @@ const MyBooking = () => {
 
                                 <td className="">
                                     <Link  >
-                                        <button onClick={() => handleUpdate(room?._id)} className="btn btn-sm ml-2 bg-[#FF5400]"><MdOutlineUpdate /></button>
+                                      
+                                        <button onClick={handleOpen} className="btn btn-sm ml-2 bg-[#FF5400]"><MdOutlineUpdate /></button>
                                     </Link>
                                 </td>
                                 <td className="">
@@ -183,6 +187,34 @@ const MyBooking = () => {
                                     <button onClick={() => handleDelete(room)} className="btn btn-sm ml-2 btn-warning"> <MdDeleteForever /></button>
                                 </td>
                             </tr>
+
+                            <Dialog
+                                size="xs"
+                                open={open}
+                                handler={handleOpen}
+                                className="bg-transparent shadow-none"
+                            >
+                                <Card className="mx-auto w-full max-w-[24rem]">
+                                    <CardBody className="flex flex-col gap-4">
+
+                                        <Typography className="-mb-2" variant="h6">
+                                            Pick a Date
+                                        </Typography>
+                                        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 border border-[#5A5A5D] p-2 focus:dark:ring-violet-600 dark:bg-gray-100" />
+
+                                        <div className="-ml-2.5 -mt-3">
+                                            <Checkbox label="Remember Me" />
+                                        </div>
+                                    </CardBody>
+                                    <CardFooter onClick={() => handleUpdate(room?._id)} className="pt-0">
+                                        <Button variant="gradient" onClick={handleOpen} fullWidth>
+                                            Update
+                                        </Button>
+
+                                    </CardFooter>
+                                </Card>
+                            </Dialog>
+
                         </tbody>)
                     }
 
@@ -195,4 +227,5 @@ const MyBooking = () => {
 };
 
 export default MyBooking;
+
 

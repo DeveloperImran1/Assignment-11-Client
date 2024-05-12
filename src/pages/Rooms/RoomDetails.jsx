@@ -26,15 +26,18 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useQuery } from "@tanstack/react-query";
+import { removeHome, setHome } from "../../CustomHooks/LocasStorage";
 
 
 
 const RoomDetails = () => {
-    const [room, setRoom] = useState({})
+    // const [room, setRoom] = useState({})
     const { id } = useParams();
     const { user } = useContext(AuthContext);
     const [startDate, setStartDate] = useState(new Date());
     const bookingDate = new Date(startDate).toLocaleDateString();
+    const [bookMark, setBookmark] = useState(false);
 
 
 
@@ -43,20 +46,45 @@ const RoomDetails = () => {
         toast.error("Not Available This Room!")
     }
 
-    useEffect(() => {
+    // normaly data fetch
+    // useEffect(() => {
 
-        axios(`http://localhost:5000/rooms/${id}`)
-            .then(res => {
-                console.log(res.data)
-                setRoom(res.data)
-            })
-    }, [])
+    //     axios(`http://localhost:5000/rooms/${id}`)
+    //         .then(res => {
+    //             console.log(res.data)
+    //             setRoom(res.data)
+    //         })
+    // }, [])
+
+// tantak query dia fetch
+const { isPending, isError, error, data: room = {}, refetch } = useQuery({
+    queryKey: ["rooms"],
+    queryFn: async () => {
+        const res = await fetch(`http://localhost:5000/rooms/${id}`);
+        return res.json()
+    }
+})
+
+
     const { _id, Area, Availability, Facilities, Location, PricePerNight, Reviews, RoomDescription, RoomImages
         , RoomSize, RoomTitle, SpecialOffers, Status, Utilities } = room;
     const userEmail = user?.email;
 
     const bookignData = { roomId: _id, Area, Location, PricePerNight, RoomImages, RoomTitle, Status, bookingDate, userEmail };
     const updateAvailability = { Availability: false };
+
+    const handleHomeAddLocalStorage = (home) => {
+        if (bookMark) {
+
+            removeHome(home);
+        }
+        else {
+            setHome(home)
+        }
+
+
+    }
+
 
     const handleBooking = (e) => {
         e.preventDefault()
@@ -87,6 +115,7 @@ const RoomDetails = () => {
                                     .then(res => {
                                         console.log(res.data)
                                         if (res.data.modifiedCount) {
+                                            refetch();
                                             swal("Successfully Booked This Room", {
                                                 icon: "success",
                                             });
@@ -130,8 +159,8 @@ const RoomDetails = () => {
                     </div>
                     <div className="flex mt-4 -mb-4 gap-6">
                         <p className="text-[20px] font-semibold">{RoomTitle}</p>
-                        <div className="bg-primary p-3  ml-5 mr-8 rounded-full hover:bg-opacity-30 bg-opacity-20 cursor-pointer hover:scale-105 overflow-hidden">
-                            <MdBookmarkAdd size={20} className="text-secondary"></MdBookmarkAdd>
+                        <div onClick={()=> setBookmark(!bookMark)} className="bg-primary p-3  ml-5 mr-8 rounded-full hover:bg-opacity-30 bg-opacity-20 cursor-pointer hover:scale-105 overflow-hidden">
+                            <MdBookmarkAdd size={20} onClick={()=> handleHomeAddLocalStorage(room)} className="text-secondary"></MdBookmarkAdd>
                         </div>
 
                     </div>
