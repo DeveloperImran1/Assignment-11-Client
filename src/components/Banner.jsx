@@ -17,7 +17,7 @@ const Banner = () => {
     return (
         <div className="h-[700px] w-full bg-cover bg-no-repeat relative flex flex-col lg:flex-row items-center justify-evenly " style={{ backgroundImage: "url('https://i.ibb.co/hVgv9bN/New-banner-image-2.jpg')" }}>
 
-            <div className='flex flex-col mt-8 lg:mt-0 gap-7 space-y-6 z-50 justify-center ml-10' >
+            <div className='flex flex-col mt-8 lg:mt-0 gap-7 space-y-6 z-10 justify-center ml-10' >
                 <h1 className=' text-xl lg:text-2xl font-semibold text-white' >Explore Buying, Renting, Investing Opportunities!</h1>
                 <h1 className='text-4xl lg:text-7xl font-bold text-white'>Hunt Your <br /> Dream Home</h1>
                 <Link>

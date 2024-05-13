@@ -18,7 +18,7 @@ const UserReview = () => {
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        axios(`http://localhost:5000/reviews`)
+        axios(`https://assignment-eleven-server-delta.vercel.app/reviews`)
             .then(res => {
                 console.log(res.data)
                 setReviews(res.data)

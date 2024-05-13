@@ -7,6 +7,7 @@ import { FaEye } from "react-icons/fa6";
 // react sweet alert
 import Swal from 'sweetalert2'
 import 'animate.css';
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const { login, signInGoogle, signInGithub, user, loading } = useContext(AuthContext);
@@ -102,6 +103,10 @@ const Login = () => {
     }
     return (
         <div>
+
+            <Helmet>
+                <title>RoomIntel || Login</title>
+            </Helmet>
             <div className="flex justify-center mx-auto">
                 <img className="w-auto h-7 sm:h-8" src="https://merakiui.com/images/logo.svg" />
             </div>

@@ -1,10 +1,14 @@
 
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const ErrorPage = () => {
     return (
         <div>
 
+            <Helmet>
+                <title>RoomIntel || Error Page</title>
+            </Helmet>
             <div>
                 <div className="min-h-screen flex flex-grow items-center justify-center bg-gray-50">
                     <div className="rounded-lg bg-white p-8 text-center ">

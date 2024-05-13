@@ -14,7 +14,7 @@ import { FaHandHoldingWater } from "react-icons/fa";
 import { FcElectricity } from "react-icons/fc";
 import LoadingCard from "../../components/LoadingCard";
 import EmptyData from "../../components/EmptyData";
-
+import { Helmet } from "react-helmet-async";
 const Rooms = () => {
 
     // tantak query dia fetching
@@ -25,7 +25,7 @@ const Rooms = () => {
     const [specialOffer, setSpecialOffers] = useState([]);
     const [sort, setSort] = useState("");
 
-    const url = `http://localhost:5000/rooms?sort=${sort}`;
+    const url = `https://assignment-eleven-server-delta.vercel.app/rooms?sort=${sort}`;
     const { isPending, isError, error, data: allRooms = [], refetch } = useQuery({
         queryKey: ["rooms"],
         queryFn: async () => {
@@ -57,11 +57,15 @@ const Rooms = () => {
         return <LoadingCard></LoadingCard>
     }
 
-  
+
 
 
     return (
         <div>
+
+            <Helmet>
+                <title>RoomIntel || Rooms</title>
+            </Helmet>
             <div className="flex justify-between" >
                 <p></p>
                 <div className="flex justify-center items-center gap-4" >

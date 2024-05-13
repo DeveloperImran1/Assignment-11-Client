@@ -1,7 +1,7 @@
 
 import AboutUs from "./AboutUs";
 // import 'react-tooltip/dist/react-tooltip.css'
-
+import { Helmet } from "react-helmet-async";
 const AboutsUsContainer = () => {
 
 
@@ -24,7 +24,12 @@ const AboutsUsContainer = () => {
 
     return (
         <div className=" bg-cover bg-no-repeat bg-fixed" style={{ backgroundImage: "url('https://bootstrapmade.com/demo/templates/Arsha/assets/img/hero-img.png')" }} >
-       
+
+
+            <Helmet>
+                <title>RoomIntel || My About Us</title>
+            </Helmet>
+
             <div id="profile" className="flex justify-center  items-center relative  " >
 
                 <div className="max-w-[400px] md:w-[450px] p-4 md:p-6  rounded-2xl space-y-3 lg:space-y-8  bg-base-200    shadow-lg group transition border-2  hover:scale-105 border-[] hover:border-[#076aa5] border-opacity-30 hover:no-underline focus:no-underline">

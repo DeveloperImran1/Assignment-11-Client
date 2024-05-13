@@ -13,7 +13,7 @@ import useAxiosSecure from "../../CustomHooks/useAxiosSecure";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { Helmet } from "react-helmet-async";
 // for material ur dialog
 
 import {
@@ -66,7 +66,7 @@ const MyBooking = () => {
     // data update korar jonno useMutation function use korbo
     const { mutateAsync } = useMutation({
         mutationFn: async (room) => {
-            const { data } = await axios.put(`http://localhost:5000/rooms/${room.roomId}`, updateAvailability)
+            const { data } = await axios.put(`https://assignment-eleven-server-delta.vercel.app/rooms/${room.roomId}`, updateAvailability)
             console.log(data)
         },
         onSuccess: () => {
@@ -90,7 +90,7 @@ const MyBooking = () => {
         if (compareDate < 86400000) {
             return deleteError()
         }
-     
+
 
         swal({
             title: "Are you sure?",
@@ -101,7 +101,7 @@ const MyBooking = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    axios.delete(`http://localhost:5000/bookingRoom/${room._id}`)
+                    axios.delete(`https://assignment-eleven-server-delta.vercel.app/bookingRoom/${room._id}`)
                         .then(res => {
                             if (res.data.deletedCount) {
                                 console.log(res.data)
@@ -120,7 +120,7 @@ const MyBooking = () => {
 
     const handleUpdate = (id) => {
         console.log("dialog theke asa id", id)
-        axios.put(`http://localhost:5000/bookingRoom/${id}`, { updateBookingDate })
+        axios.put(`https://assignment-eleven-server-delta.vercel.app/bookingRoom/${id}`, { updateBookingDate })
             .then(res => {
                 if (res.data.modifiedCount) {
                     console.log(res.data)
@@ -147,6 +147,9 @@ const MyBooking = () => {
         <div>
 
 
+            <Helmet>
+                <title>RoomIntel || My Booking</title>
+            </Helmet>
 
             <h1 className="text-xl mg:text-2xl lg:text-3xl font-bold text-center leading-none dark:text-gray-600 mb-3 ">My added List</h1>
 

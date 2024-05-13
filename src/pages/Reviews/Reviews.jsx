@@ -52,7 +52,7 @@ const Reviews = () => {
         const message = e.target.message.value;
         const reviewObj = { message, rating, email, photoURL, date, userName, RoomId }
         console.log(reviewObj)
-        axios.post(`http://localhost:5000/reviews`, reviewObj)
+        axios.post(`https://assignment-eleven-server-delta.vercel.app/reviews`, reviewObj)
             .then(res => {
                 if (res.data.acknowledged) {
                     reviewSuccess()
@@ -64,13 +64,11 @@ const Reviews = () => {
 
 
     return (
-        <div className='bg-cover bg-no-repeat bg-fixed flex flex-col justify-center items-center relative ' style={{ backgroundImage: "url('https://i.ibb.co/5rWkNfC/r-architecture-2g-Dwl-Iim3-Uw-unsplash-800x533.jpg')" }}  >
+        <div className='bg-cover bg-no-repeat bg-fixed flex flex-col justify-center items-center relative  ' style={{ backgroundImage: "url('https://i.ibb.co/5rWkNfC/r-architecture-2g-Dwl-Iim3-Uw-unsplash-800x533.jpg')" }}  >
 
-            <div className='h-full w-full bg-gradient-to-r from-indigo-500 via-gray-800 to-pink-500 absolute opacity-40' >
+        
 
-            </div>
-
-            <div className="flex flex-col max-w-xl border-2 shadow-sm rounded-xl my-9 lg:p-12 z-50 dark:bg-gray-50 dark:text-gray-800">
+            <div className="flex bg-gray-600 flex-col max-w-xl border-2 shadow-sm rounded-xl my-9 p-8 lg:p-12 z-10 dark:bg-gray-50 dark:text-gray-800 ">
                 <div className="flex flex-col items-center  w-full text-white">
                     <h2 className="text-3xl font-semibold text-center">Your opinion matters!</h2>
                     <div className="flex flex-col items-center py-6 space-y-3">
@@ -116,6 +114,9 @@ const Reviews = () => {
                 </div>
             </div>
         </div>
+
+
+   
     );
 };
 

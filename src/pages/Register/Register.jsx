@@ -9,6 +9,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useContext, useState } from "react";
 import Swal from 'sweetalert2'
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -53,7 +54,7 @@ const Register = () => {
         console.log(name, email, photo, password)
 
         // Validation form
-        if(!name.length || !email.length || !password.length || !photo.length ){
+        if (!name.length || !email.length || !password.length || !photo.length) {
             return setErrorMessage("Empty Field is Not Alowed")
         }
         setErrorMessage("")
@@ -72,11 +73,11 @@ const Register = () => {
         register(email, password)
             .then(res => {
                 handleUpdateProfile(name, photo)
-                .then(result => {
+                    .then(result => {
 
-                    console.log(result)
-                    successfullyRegister()
-                })
+                        console.log(result)
+                        successfullyRegister()
+                    })
 
             })
             .catch(err => {
@@ -108,7 +109,10 @@ const Register = () => {
     }
     return (
         <div className=" flex flex-col lg:flex-row justify-between overflow-x-hidden gap-[100px]">
-      
+
+            <Helmet>
+                <title>RoomIntel || Register</title>
+            </Helmet>
             <div className="flex items-center justify-center">
                 <img className="w-[100%]  h-[100%] lg:w-[500px] lg:h-[400px]  " src="https://app.svgator.com/assets/svgator.webapp/log-in-girl.svg" alt="" />
 
@@ -151,21 +155,21 @@ const Register = () => {
                             <label htmlFor="password" >
                                 Password
                             </label>
-            
+
 
                         </div>
                         <div className="relative">
-                            <input type={`${showPassword ? 'password' : 'text'}`} name="password" id="password"  placeholder="Password" className="w-full px-4 py-3 rounded-md border border-[#076aa5] focus:outline-none focus:ring  " />
+                            <input type={`${showPassword ? 'password' : 'text'}`} name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border border-[#076aa5] focus:outline-none focus:ring  " />
                             <div className="absolute top-3 right-3 " onClick={() => setShowPassword(!showPassword)}>
-                            {showPassword ? <FaEyeSlash size="20" ></FaEyeSlash> : <FaEye size="20"></FaEye>}
-                        </div>
+                                {showPassword ? <FaEyeSlash size="20" ></FaEyeSlash> : <FaEye size="20"></FaEye>}
+                            </div>
                         </div>
                         {errorMessage && <p className="text-red-500">{errorMessage}</p>}
                     </div>
                     {/* Sign in Button */}
                     <button
-                    data-aos="flip-left"
-                     className="text-lg rounded-xl relative p-[10px] block w-full bg-[#076aa5] text-white border-y-4 duration-500 overflow-hidden focus:border-indigo-500  group">
+                        data-aos="flip-left"
+                        className="text-lg rounded-xl relative p-[10px] block w-full bg-[#076aa5] text-white border-y-4 duration-500 overflow-hidden focus:border-indigo-500  group">
                         Sign In
                         <span className="absolute opacity-0 group-hover:opacity-100 duration-100 group-hover:duration-1000 ease-out flex justify-center inset-0 items-center z-10 text-white">
                             Let&apos;s go
@@ -177,17 +181,17 @@ const Register = () => {
                     </button>
                 </form>
 
-                <div 
-                data-aos="flip-left"
-                className="flex items-center pt-4 space-x-2">
+                <div
+                    data-aos="flip-left"
+                    className="flex items-center pt-4 space-x-2">
                     <div className="flex-1 h-px bg-gray-300"></div>
                     <p className="text-sm text-gray-600">Sign In with social accounts</p>
                     <div className="flex-1 h-px bg-gray-300"></div>
                 </div>
                 {/* Social icons */}
-                <div 
-                data-aos="flip-left"
-                className="flex justify-center space-x-4">
+                <div
+                    data-aos="flip-left"
+                    className="flex justify-center space-x-4">
                     <button onClick={handleGoogleSignIn} aria-label="Log in with Google" className="p-3 rounded-full hover:bg-gray-200">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-5 h-5 fill-current"><path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"></path></svg>
                     </button>
@@ -197,8 +201,8 @@ const Register = () => {
                     </button>
                 </div>
                 <p
-                data-aos="flip-left"
-                className="text-sm text-center gap-2 flex justify-center sm:px-6 ">
+                    data-aos="flip-left"
+                    className="text-sm text-center gap-2 flex justify-center sm:px-6 ">
                     Already have an account?
                     <Link to="/login" className="underline hover:text-[#076aa5]">
                         Login
