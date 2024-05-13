@@ -11,6 +11,8 @@ import MyBooking from "../pages/MyBooking/MyBooking";
 import Reviews from "../pages/Reviews/Reviews";
 import PrivateRoute from "./PrivateRoute";
 import Bookmars from "../BookmarkList/Bookmars"
+import AboutsUsContainer from "../pages/AboutUs/AboutUsContainer";
+import Galery from "../pages/Galery/Galery";
 
 const router = createBrowserRouter([
     {
@@ -54,6 +56,14 @@ const router = createBrowserRouter([
             {
                 path: "/bookmarks",
                 element: <Bookmars></Bookmars>
+            },
+            {
+                path: "/aboutUs",
+                element: <AboutsUsContainer></AboutsUsContainer>
+            },
+            {
+                path: "/galery",
+                element: <Galery></Galery>
             },
         ]
     },

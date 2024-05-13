@@ -190,12 +190,12 @@ const MyBooking = () => {
                                 <td className="">
                                     <Link  >
 
-                                        <button onClick={handleOpen} className="btn btn-sm ml-2 bg-[#FF5400]"><MdOutlineUpdate /></button>
+                                        <button onClick={handleOpen} className="btn btn-sm ml-2 bg-[#076aa5]"><MdOutlineUpdate /></button>
                                     </Link>
                                 </td>
                                 <td className="">
                                     <Link to={`/userReview/${room?.roomId}`}>
-                                        <button onClick={() => setCurrentRoom(room)} className="btn btn-sm ml-2 bg-[#FF5400]"><FaRegEdit /></button>
+                                        <button onClick={() => setCurrentRoom(room)} className="btn btn-sm ml-2 bg-[#076aa5]"><FaRegEdit /></button>
                                     </Link>
                                 </td>
                                 <td className="">

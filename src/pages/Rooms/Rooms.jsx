@@ -13,6 +13,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FaHandHoldingWater } from "react-icons/fa";
 import { FcElectricity } from "react-icons/fc";
 import LoadingCard from "../../components/LoadingCard";
+import EmptyData from "../../components/EmptyData";
 
 const Rooms = () => {
 
@@ -56,12 +57,13 @@ const Rooms = () => {
         return <LoadingCard></LoadingCard>
     }
 
+  
 
 
     return (
         <div>
             <div className="flex justify-between" >
-                <p>Alaaljjfdskjf</p>
+                <p></p>
                 <div className="flex justify-center items-center gap-4" >
                     <div className="text-gray-700" >
                         <select
@@ -74,7 +76,7 @@ const Rooms = () => {
                             id='sort'
                             className='border p-4 rounded-md'
                         >
-                            <option value='' className="mb-6">Sort By Deadline</option>
+                            <option value='' className="mb-6">Sort By Price</option>
                             <option value='dsc'>Descending Order</option>
                             <option value='asc'>Ascending Order</option>
                         </select>
@@ -111,21 +113,21 @@ const Rooms = () => {
                     </TabList>
 
                     <TabPanel>
-                        <div className="grid grid-cols-3 gap-5" >
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" >
                             {
                                 allRooms && allRooms?.map(room => <RoomsCard key={room._id} room={room}  ></RoomsCard>)
                             }
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        <div className="grid grid-cols-3 gap-5" >
+                        <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" >
                             {
                                 allRooms && availableRooms?.map(room => <RoomsCard key={room?._id} room={room}  ></RoomsCard>)
                             }
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        <div className="grid grid-cols-3 gap-5" >
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" >
                             {
                                 specialOffer?.map(room => <RoomsCard key={room?._id} room={room}  ></RoomsCard>)
                             }

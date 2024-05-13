@@ -1,7 +1,7 @@
 
 const LoadingCard = () => {
     return (
-        <div className="flex justify-between items-center " >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between items-center " >
             <div className=" p-6 rounded-md bg-white shadow-md mx-auto max-w-fit">
                 <div className="animate-pulse">
                     {/* Product Image Skeleton */}

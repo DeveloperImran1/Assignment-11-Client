@@ -1,43 +1,20 @@
 
-import "leaflet/dist/leaflet.css"; // Import Leaflet CSS
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 const NewsLetter = () => {
     return (
-        <div className="flex justify-between" >
-            <div className="" >
-            <MapContainer
-                center={[33.147984, 73.75367]}
-                zoom={11}
-                scrollWheelZoom={true}
-                className="w-[700px] h-[80vh]"
-            >
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                <Marker position={[41.505, -0.07]}>
-                    <Popup>
-                        A pretty CSS3 popup. <br /> Easily customizable.
-                    </Popup>
-                </Marker>
-            </MapContainer>
-      
-            </div>
+    
+        <div className="bg-fixed bg-no-repeat bg-cover text-white" style={{ backgroundImage: "url('https://img.freepik.com/premium-photo/simple-little-house-model-one-story-village-building-3d-rendering_187882-1562.jpg')" }} >
+            <div className=" px-4 xs:px-10 xl:px-0 py-14 sm:py-20 ml-[40px] max-w-7xl mx-auto"><h3 className="text-2xl sm:text-3xl font-semibold max-w-96 sm:leading-10">Subscribe our news letter for get our exiting offer!</h3>
+                <div className="flex item-center mt-5 ">
+                    <div className="relative">
 
-            <section className="py-6 dark:bg-gray-100 dark:text-gray-900">
-                <div className="container mx-auto flex flex-col justify-center p-4 space-y-8 md:p-10 lg:space-y-0 lg:space-x-12 lg:justify-between ">
-                    <div className="flex flex-col space-y-4 text-center lg:text-left">
-                        <h1 className="text-5xl font-bold leading-none">Stay in the loop</h1>
-                        <p className="text-lg">Doloribus consectetur quasi ipsa quo neque culpa blanditiis ducimus recusandae a veritatis optio cumque, in harum ad nam!</p>
+                        <input name="email" type="email" placeholder="Email address" className=" py-2 md:py-3 px-5 rounded-l-md border-2 border-white  text-primary-light w-full outline-none font-semibold rounded-r-none" required="" />
                     </div>
-                    <div className="flex flex-row items-center self-center justify-center flex-shrink-0 shadow-md lg:justify-end">
-                        <div className="flex flex-row">
-                            <input type="text" placeholder="example@email.com" className="w-3/5 p-3 rounded-l-lg sm:w-2/3" />
-                            <button type="button" className="w-2/5 p-3 font-semibold rounded-r-lg sm:w-1/3 dark:bg-violet-600 dark:text-gray-50">Subscribe</button>
-                        </div>
-                    </div>
+                    <button className=" border-2 border-white border-l-2 hover:border-l-primary-light py-2 md:py-3 px-3 md:px-5 rounded-r-md rounded-l-none bg-primary-light hover:bg-[#029cfb]  transition-all font-semibold hover:text-primary-light  ">Subscribe</button>
                 </div>
-            </section>
+            </div>
         </div>
-    );
+    )
 };
 
 export default NewsLetter;

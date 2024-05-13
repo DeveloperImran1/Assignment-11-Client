@@ -89,21 +89,21 @@ const Navbar = () => {
 
     return (
         <div>
-            <nav className="flex items-center justify-between  px-4 py-2 leading-none dark:text-white pt-[30px] dark:bg-black  font-bold ">
+            <nav className="flex items-center justify-between  px-4 py-2 leading-none dark:text-white pt-[20px] dark:bg-black  font-bold ">
                 {/* <nav className="flex items-center justify-between bg-gradient-to-t from-[#487497] to-[#004e81]  px-4 py-2 text-black pt-[30px]  "> */}
                 <NavLink to="/"  >
                     <div className="scale-100 cursor-pointer rounded-2xl px-3 py-2 text-xl flex justify-center items-center font-semibold leading-none dark:text-white transition-all duration-200 hover:scale-110">
-                        <img src="https://i.ibb.co/MNmyYSr/Group-40071-2.png" alt="Logo" />
-                        <h2 className='text-[30px] font-bold hidden lg:flex leading-none dark:text-white' >Travels<span className='text-[#FF5400]' >Book</span></h2>
+                        <img src="https://i.ibb.co/tC4g9Ws/home-logo-and-symbols-vector-removebg-preview.png" className='h-[60px] w-[100px]' alt="Logo" />
+                        <h2 className='text-[30px] font-bold hidden lg:flex leading-none dark:text-white' >Room<span className='text-[#076aa5]' >Intel</span></h2>
                     </div>
                 </NavLink>
                 <ul className="hidden items-center justify-between gap-10 lg:flex">
-                    <NavLink to="/" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'leading-none dark:text-white'} >
+                    <NavLink to="/" className={({ isActive }) => isActive ? 'text-[#076aa5]' : 'leading-none dark:text-white'} >
                         <li className="group flex cursor-pointer flex-col">
                             Home<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                         </li>
                     </NavLink>
-                    <NavLink to="/rooms" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'leading-none dark:text-white'}  >
+                    <NavLink to="/rooms" className={({ isActive }) => isActive ? 'text-[#076aa5]' : 'leading-none dark:text-white'}  >
                         <li className="group flex  cursor-pointer flex-col">
                             Rooms<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                         </li>
@@ -112,24 +112,34 @@ const Navbar = () => {
                     {
                         user && <>
 
-                            <NavLink to="/myBooking" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'leading-none dark:text-white'}  >
+                            <NavLink to="/myBooking" className={({ isActive }) => isActive ? 'text-[#076aa5]' : 'leading-none dark:text-white'}  >
                                 <li className="group flex  cursor-pointer flex-col  ">
-                                    My Booking<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                                    My Bookings<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                                 </li>
                             </NavLink>
-                            <NavLink to="/bookmarks" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'leading-none dark:text-white'}  >
+                            <NavLink to="/bookmarks" className={({ isActive }) => isActive ? 'text-[#076aa5]' : 'leading-none dark:text-white'}  >
                                 <li className="group flex  cursor-pointer flex-col  ">
                                     Bookmarks<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                                 </li>
                             </NavLink>
 
-                            <NavLink to="/userProfile" className={({ isActive }) => isActive ? 'text-[#FF5400]' : 'leading-none dark:text-white'}  >
+                            <NavLink to="/userProfile" className={({ isActive }) => isActive ? 'text-[#076aa5]' : 'leading-none dark:text-white'}  >
                                 <li className="group flex  cursor-pointer flex-col  ">
                                     Profile<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                                 </li>
                             </NavLink>
                         </>
                     }
+                     <NavLink to="/aboutUs" className={({ isActive }) => isActive ? 'text-[#076aa5]' : 'leading-none dark:text-white'}  >
+                        <li className="group flex  cursor-pointer flex-col">
+                            About Us<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                        </li>
+                    </NavLink>
+                     <NavLink to="/galery" className={({ isActive }) => isActive ? 'text-[#076aa5]' : 'leading-none dark:text-white'}  >
+                        <li className="group flex  cursor-pointer flex-col">
+                        Galery<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                        </li>
+                    </NavLink>
 
 
                 </ul>
@@ -148,14 +158,14 @@ const Navbar = () => {
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="cursor-pointer" > <line x1="4" x2="20" y1="12" y2="12" /> <line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" /> </svg>
                     {dropDownState && (
-                        <ul className=" z-10 py-[20px] gap-2  bg-[#393E46]  absolute right-0 top-11 flex w-[200px] flex-col  rounded-lg   text-base ">
+                        <ul className=" z-50 py-[20px] gap-2 cursor-pointer bg-[#393E46]  absolute right-0 top-11 flex w-[200px] flex-col  rounded-lg   text-base ">
 
-                            <NavLink to="/" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+                            <NavLink to="/" className={({ isActive }) => isActive ? 'text-[#076aa5] ' : ' text-white hover:bg-[#076aa5]'} >
                                 <li className="group flex cursor-pointer flex-col pl-[20px] ">
                                     Home
                                 </li>
                             </NavLink>
-                            <NavLink to="/rooms" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+                            <NavLink to="/rooms" className={({ isActive }) => isActive ? 'text-[#076aa5] ' : ' text-white hover:bg-[#076aa5]'} >
                                 <li className="group flex cursor-pointer flex-col pl-[20px]">
                                     Rooms
                                 </li>
@@ -163,39 +173,49 @@ const Navbar = () => {
                             {
                                 user ? <>
 
-                                    <NavLink to="/myBooking" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+                                    <NavLink to="/myBooking" className={({ isActive }) => isActive ? 'text-[#076aa5] ' : ' text-white hover:bg-[#076aa5]'} >
                                         <li className="group flex cursor-pointer flex-col pl-[20px]">
-                                            My Booking
+                                            My Bookings
                                         </li>
                                     </NavLink>
-                                    <NavLink to="/bookmarks" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+                                    <NavLink to="/bookmarks" className={({ isActive }) => isActive ? 'text-[#076aa5] ' : ' text-white hover:bg-[#076aa5]'} >
                                         <li className="group flex cursor-pointer flex-col pl-[20px]">
-                                           Bookmark
+                                            Bookmark
                                         </li>
                                     </NavLink>
-                                    <NavLink to="/userProfile" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+                                    <NavLink to="/userProfile" className={({ isActive }) => isActive ? 'text-[#076aa5] ' : ' text-white hover:bg-[#076aa5]'} >
                                         <li className="group flex cursor-pointer flex-col pl-[20px]">
                                             Profile
                                         </li>
                                     </NavLink>
-                                    <NavLink onClick={handleLogout} className={({ isActive }) => isActive ? 'text-[#ffffff] ' : ' text-white hover:bg-[#FF5400]'} >
+                                    <NavLink onClick={handleLogout} className={({ isActive }) => isActive ? 'text-[#ffffff] ' : ' text-white hover:bg-[#076aa5]'} >
                                         <li className="group flex cursor-pointer flex-col pl-[20px]">
                                             Log Out
                                         </li>
                                     </NavLink>
                                 </> : <>
-                                    <NavLink to="/login" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+                                    <NavLink to="/login" className={({ isActive }) => isActive ? 'text-[#076aa5] ' : ' text-white hover:bg-[#076aa5]'} >
                                         <li className="group flex cursor-pointer flex-col pl-[20px]">
                                             Login
                                         </li>
                                     </NavLink>
-                                    <NavLink to="/register" className={({ isActive }) => isActive ? 'text-[#FF5400] ' : ' text-white hover:bg-[#FF5400]'} >
+                                    <NavLink to="/register" className={({ isActive }) => isActive ? 'text-[#076aa5] ' : ' text-white hover:bg-[#076aa5]'} >
                                         <li className="group flex cursor-pointer flex-col pl-[20px]">
                                             Register
                                         </li>
                                     </NavLink>
                                 </>
                             }
+                                      <NavLink to="/aboutUs" className={({ isActive }) => isActive ? 'text-[#076aa5] ' : ' text-white hover:bg-[#076aa5]'} >
+                                        <li className="group flex cursor-pointer flex-col pl-[20px]">
+                                            About Us
+                                        </li>
+                                    </NavLink>
+                                      <NavLink to="/galery" className={({ isActive }) => isActive ? 'text-[#076aa5] ' : ' text-white hover:bg-[#076aa5]'} >
+                                        <li className="group flex cursor-pointer flex-col pl-[20px]">
+                                            Galery
+                                        </li>
+                                    </NavLink>
 
                         </ul>
 
@@ -237,7 +257,7 @@ const Navbar = () => {
                                 <Tooltip id="my-tooltip" />
                             </div>
 
-                            <button onClick={handleLogout} className="rounded-lg border-2 border-sky-500 px-5 py-2 text-xl text-sky-500 duration-200 hover:bg-[#FF5400] hover:text-white">Logout</button>
+                            <button onClick={handleLogout} className="rounded-lg border-2 border-sky-500 px-5 py-2 text-xl text-sky-500 duration-200 hover:bg-[#076aa5] hover:text-white">Logout</button>
 
 
                         </div> : <div className='flex justify-center items-center gap-2' >
@@ -253,10 +273,10 @@ const Navbar = () => {
                                 </label>
                             </div>
                             <Link to="/login">
-                                <button className="rounded-lg border-2 border-sky-500 px-5 py-2 text-xl text-sky-500 duration-200 hover:bg-[#FF5400] hover:text-white">Login</button>
+                                <button className="rounded-lg border-2 border-sky-500 px-5 py-2 text-xl text-sky-500 duration-200 hover:bg-[#076aa5] hover:text-white">Login</button>
                             </Link>
                             <Link to="/register">
-                                <button className="rounded-lg border-2 border-sky-500 px-5 py-2 text-xl text-sky-500 duration-200 hover:bg-[#FF5400] hover:text-white">Register</button>
+                                <button className="rounded-lg border-2 border-sky-500 px-5 py-2 text-xl text-sky-500 duration-200 hover:bg-[#076aa5] hover:text-white">Register</button>
                             </Link>
                         </div>
                     }

@@ -39,7 +39,7 @@ const SatisfiedClients = () => {
                         data-aos="fade-left"
                         data-aos-offset="300"
                         data-aos-easing="ease-in-sine"
-                         className=" text-[16px] text-[#131313CC] text-center mb-12 w-full lg:w-[80%] mx-auto ">At Haven House, our residents satisfaction is our top priority. Dont just take our word for it – hear what some of our happy residents have to say... </p>
+                         className=" text-[16px] text-[#131313CC] text-center mb-12 w-full lg:w-[80%] mx-auto ">At RoomIntel, our residents satisfaction is our top priority. Dont just take our word for it – hear what some of our happy residents have to say... </p>
 
                     </div>
                     <Marquee className="w-full h-[470px]" autoFill="false" pauseOnHover="true" speed="100">

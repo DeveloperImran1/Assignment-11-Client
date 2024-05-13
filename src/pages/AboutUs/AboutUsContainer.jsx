@@ -1,11 +1,9 @@
-import { useContext } from "react";
-import { NavLink } from "react-router-dom";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { ScaleLoader } from "react-spinners";
 
-const UserProfile = () => {
-    const { user, loading } = useContext(AuthContext);
-    console.log(user)
+import AboutUs from "./AboutUs";
+// import 'react-tooltip/dist/react-tooltip.css'
+
+const AboutsUsContainer = () => {
+
 
     const svgs = [
         { svg: (<svg width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xmlSpace="preserve" fill="#000000"><g strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><circle fill="#DC4373" cx="256" cy="256" r="256"></circle><path fill="#C13366" d="M358.334,151.376c-6.666,2.577-14.305,1.838-17.863-0.534 c-43.098-24.135-89.643-31.03-132.741-18.963c-61.693,18.227-86.893,86.635-86.73,150.494 c11.311,21.068,26.279,52.617,30.927,76.552l149.12,149.123C406.313,489.36,489.339,406.344,508.04,301.084L358.334,151.376z"></path><path fill="#F0F1F1" d="M255.997,109.654c-80.796,0-146.529,65.655-146.529,146.348s65.733,146.342,146.529,146.342 c80.799,0,146.535-65.646,146.535-146.342C402.532,175.309,336.796,109.654,255.997,109.654L255.997,109.654z M352.418,178.728 c16.715,20.716,26.872,46.878,27.341,75.386c-5.561-1.141-29.115-5.534-57.263-5.534c-9.082,0-18.641,0.455-28.224,1.639 c-0.809-1.967-1.619-3.927-2.469-5.906c-2.486-5.846-5.163-11.645-7.937-17.36C327.187,209.105,348.084,184.334,352.418,178.728 L352.418,178.728z M255.997,132.563c31.223,0,59.764,11.6,81.563,30.706c-3.451,4.708-22.166,28.101-63.938,43.884 c-19.335-35.344-40.498-64.61-45.535-71.406C237.063,133.668,246.405,132.563,255.997,132.563L255.997,132.563z M202.821,144.558 c4.268,5.879,25.464,35.459,45.296,70.518c-53.224,13.991-100.488,14.903-111.895,14.903h-1.212 C143.205,192.212,168.722,160.83,202.821,144.558L202.821,144.558z M132.201,256.195c0-1.019,0.017-2.038,0.05-3.051 c0.74,0.009,1.833,0.009,3.25,0.009c15.363,0,68.691-1.269,123.644-17.577c3.336,6.523,6.511,13.145,9.464,19.763 c-1.388,0.398-2.757,0.796-4.117,1.241c-61.874,19.983-95.884,72.888-101.117,81.536 C143.986,316.268,132.201,287.587,132.201,256.195L132.201,256.195z M255.997,379.818c-28.393,0-54.596-9.616-75.505-25.74 c3.537-6.934,29.206-53.15,97.013-76.75c0.041-0.017,0.086-0.033,0.136-0.045c17.003,44.265,24.204,81.417,26.179,92.931 C289.104,376.401,272.944,379.818,255.997,379.818L255.997,379.818z M326.115,358.026c-1.66-9.526-8.33-44.344-23.726-86.809 c8.635-1.343,17.036-1.874,24.914-1.874c25.874,0,46.115,5.665,50.817,7.102C372.529,310.167,353.223,339.349,326.115,358.026 L326.115,358.026z"></path><path fill="#D1D1D1" d="M255.997,109.654c-0.191,0-0.379,0.014-0.571,0.014v22.902c0.19,0,0.379-0.009,0.571-0.009 c31.223,0,59.764,11.6,81.563,30.706c-3.451,4.708-22.166,28.101-63.938,43.884c-6.07-11.097-12.321-21.594-18.196-30.984v60.478 c1.238-0.353,2.477-0.705,3.717-1.072c3.336,6.523,6.511,13.145,9.464,19.763c-1.388,0.398-2.757,0.796-4.117,1.239 c-3.098,1.002-6.106,2.105-9.064,3.26v26.614c6.811-3.281,14.145-6.359,22.078-9.121c0.041-0.017,0.086-0.033,0.136-0.045 c17.003,44.265,24.204,81.417,26.179,92.931c-14.714,6.187-30.873,9.604-47.823,9.604c-0.191,0-0.379-0.012-0.571-0.012v22.525 c0.191,0,0.379,0.014,0.571,0.014c80.799,0,146.535-65.646,146.535-146.342C402.532,175.309,336.796,109.654,255.997,109.654z M291.804,244.312c-2.486-5.846-5.163-11.645-7.937-17.36c43.32-17.848,64.217-42.618,68.551-48.225 c16.715,20.716,26.874,46.878,27.341,75.385c-5.561-1.141-29.115-5.534-57.261-5.534c-9.082,0-18.641,0.457-28.224,1.639 C293.462,248.251,292.654,246.291,291.804,244.312z M326.115,358.026c-1.66-9.526-8.33-44.344-23.726-86.809 c8.635-1.343,17.036-1.874,24.914-1.874c25.874,0,46.115,5.665,50.817,7.102C372.529,310.167,353.223,339.349,326.115,358.026z"></path></g></svg>) },
@@ -15,50 +13,66 @@ const UserProfile = () => {
         { svg: (<svg width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.002 512.002" xmlSpace="preserve" fill="#000000"><g strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><circle fill="#4E598F" cx="256.001" cy="256" r="256"></circle><path fill="#364270" d="M511.596,241.7L391.019,121.085c-1.998,0.605-6.982-1.714-9.173-1.274 c-51.717,8.62-101.71,0-151.704,13.791c-24.135,6.896-25.859,36.202-34.478,55.165c-12.067,34.478-10.343,72.404-25.859,105.158 c-10.343,22.411-34.478,36.202-43.098,62.061c-2.875,10.785-2.705,24.379-5.956,34.69l120.98,120.922 c4.725,0.26,9.48,0.403,14.269,0.403c141.384,0,256-114.616,256-256C512.001,251.201,511.858,246.434,511.596,241.7z"></path><g><path fill="#FFFFFF" d="M363.043,109.466H148.958c-21.809,0-39.49,17.68-39.49,39.49v214.085 c0,21.811,17.68,39.49,39.49,39.49h105.584l0.183-104.722h-27.21c-3.536,0-6.406-2.86-6.418-6.396l-0.133-33.759 c-0.014-3.553,2.867-6.444,6.42-6.444h27.162v-32.618c0-37.852,23.118-58.463,56.884-58.463h27.71c3.543,0,6.42,2.874,6.42,6.42 v28.463c0,3.546-2.874,6.42-6.416,6.42l-17.006,0.01c-18.363,0-21.921,8.725-21.921,21.533v28.239h40.351 c3.848,0,6.83,3.358,6.375,7.173l-4.001,33.759c-0.381,3.232-3.122,5.665-6.375,5.665h-36.168l-0.183,104.726h62.826 c21.809,0,39.49-17.682,39.49-39.491v-214.09C402.533,127.147,384.852,109.466,363.043,109.466L363.043,109.466z"></path><polygon fill="#FFFFFF" points="254.542,402.53 254.725,297.808 254.277,297.808 254.277,402.53 "></polygon></g><path fill="#D1D1D1" d="M363.043,109.466H254.277v141.741h0.269V218.59c0-37.852,23.118-58.463,56.884-58.463h27.71 c3.543,0,6.42,2.874,6.42,6.42v28.463c0,3.546-2.874,6.42-6.416,6.42l-17.006,0.01c-18.363,0-21.921,8.725-21.921,21.533v28.238 h40.351c3.848,0,6.83,3.358,6.375,7.173l-4.001,33.759c-0.381,3.232-3.122,5.665-6.375,5.665h-36.168l-0.183,104.726h62.826 c21.809,0,39.49-17.682,39.49-39.491V148.956C402.533,127.147,384.852,109.466,363.043,109.466z"></path></g></svg>) }
     ]
 
-    
-    if (loading) {
-        return <div className="flex justify-center items-center flex-col min-h-[calc(100vh-116px)]">
-        <ScaleLoader size={100} color='#F92FD3' ></ScaleLoader>
-      </div>
+    const myTeam = [
+        ["Emily Johnson", "Travel Consultan", "https://bootstrapmade.com/demo/templates/Arsha/assets/img/team/team-4.jpg"],
+        ["MS Jesika", "CEO ExpertBD", "https://bootstrapmade.com/demo/templates/Arsha/assets/img/team/team-2.jpg"],
+        ["Alexandra", "Frontend Developer", "https://bootstrapmade.com/demo/templates/Arsha/assets/img/team/team-1.jpg"],
+        ["Tasrif", "Travel Expert", "https://bootstrapmade.com/demo/templates/Arsha/assets/img/team/team-3.jpg"],
+        ["Md Roton", "UI-Ux Designer", "https://i.ibb.co/r7VB6Nt/392932956-838857447739345-3225178693452181832-n.jpg"],
+        ["Mark Davis", "SEO Expert", "https://bootstrapmade.com/demo/templates/Presento/assets/img/testimonials/testimonials-4.jpg"],
+    ]
 
-    }
     return (
-        <div>
-          
-            <div id="profile" className="flex justify-center  items-center relative  ">
+        <div className=" bg-cover bg-no-repeat bg-fixed" style={{ backgroundImage: "url('https://bootstrapmade.com/demo/templates/Arsha/assets/img/hero-img.png')" }} >
+       
+            <div id="profile" className="flex justify-center  items-center relative  " >
 
-                <div className="max-w-[400px] md:w-[450px] p-4 md:p-6  rounded-2xl space-y-8  bg-base-200    shadow-lg group transition border-2  hover:scale-105 border-primary hover:border-[#076aa5] border-opacity-30 hover:no-underline focus:no-underline">
+                <div className="max-w-[400px] md:w-[450px] p-4 md:p-6  rounded-2xl space-y-3 lg:space-y-8  bg-base-200    shadow-lg group transition border-2  hover:scale-105 border-[] hover:border-[#076aa5] border-opacity-30 hover:no-underline focus:no-underline">
                     {/* profile image & bg  */}
                     <div className="relative">
-                        <img className="w-full h-full rounded-2xl bg-gray-500" src="https://source.unsplash.com/350x150/?northernlights" alt="card navigate ui" />
-                        <img className="w-[100px] h-[100px] absolute -bottom-10 left-1/2 -translate-x-1/2 rounded-full bg-gray-400 border border-white" src={user?.photoURL || "https://source.unsplash.com/300x300/?profile"} alt="card navigate ui" />
+                        <img className="w-full h-[140px] rounded-2xl bg-gray-500" src="https://i.ibb.co/ChCGg3Z/404452958-2443244652516191-5414449848808334082-n.jpg" alt="card navigate ui" />
+
+                        <img className="w-[100px] h-[100px] absolute -bottom-10 left-1/2 -translate-x-1/2 rounded-full bg-gray-400 border border-white" src="https://i.ibb.co/zGd68Hw/409190995-2451672608340062-5052422953989411988-n.jpg" alt="card navigate ui" />
                     </div>
                     {/* profile name & role */}
                     <div className="pt-8 text-center space-y-1">
-                        <h1 className="text-xl md:text-2xl">{user?.displayName || "name not found"}</h1>
-                        <p className="text-gray-400 text-sm">{user?.email || "ih9066588@gmail.com"}</p>
+                        <a
+                            data-tooltip-id="my-tooltip"
+                            data-tooltip-content="Hey Broo.!"
+                            data-tooltip-place="top" >
+
+                            <h1 className="text-xl md:text-2xl">Md Imran</h1>
+                        </a>
+                        <p className="text-gray-400 text-sm">h9066588@gmail.com</p>
                     </div>
                     <div className="pt-3 text-center space-y-1">
                         <h1 className="text-xl font-bold md:text-2xl">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ </h1>
 
                     </div>
 
+
                     <div className="flex flex-wrap px-4  md:px-8 justify-between items-center">
                         {/* social icons  */}
                         <div className="flex w-full justify-between gap-4 py-2">
                             {svgs?.map((svg, idx) => (<div key={idx} className="rounded-full shadow-[0px_2px_8px_0px_rgba(99,99,99,0.4)]  duration-300 hover:scale-150">{svg?.svg}</div>))}
                         </div>
-                        <NavLink to="/aboutUs" className="w-full flex items-center justify-center">
-                            <button className="hover:bg-[#0095FF] hover:scale-95 font-medium hover:text-white w-[80%] mx-auto py-2 mt-7 rounded-full hover:shadow-xl   text-gray-700 shadow-[0px_0px_10px_#E2DADA] t duration-500">
-                                Learn More
-                            </button>
-                        </NavLink>
+
                     </div>
                 </div>
 
+            </div>
+            <div className="pt-3 mt-6 text-center space-y-1">
+                <h1 className="text-xl font-bold md:text-2xl">We All Team Members</h1>
+
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-7 gap-6 items-center justify-items-center" >
+
+                {
+                    myTeam.map((member, index) => <AboutUs key={index} member={member}></AboutUs>)
+                }
             </div>
         </div>
     );
 };
 
-export default UserProfile;
+export default AboutsUsContainer;

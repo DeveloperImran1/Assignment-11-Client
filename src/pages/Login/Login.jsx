@@ -113,8 +113,8 @@ const Login = () => {
 
 
                 <div className=" ">
-                    <div className="z-60 relative w-full lg:w-[400px] p-8 space-y-3 rounded-xl border border-[#FF5400] bg-white  font-sans mx-auto">
-                        <h1 className="animate__animated animate__fadeInDownBig  text-3xl font-bold text-center text-[#FF5400]">Login</h1>
+                    <div className="z-60 relative w-full lg:w-[400px] p-8 space-y-3 rounded-xl border border-[#076aa5] bg-white  font-sans mx-auto">
+                        <h1 className="animate__animated animate__fadeInDownBig  text-3xl font-bold text-center text-[#076aa5]">Login</h1>
                         {/* Input fields and the form started */}
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="space-y-2 text-sm">
@@ -123,7 +123,7 @@ const Login = () => {
                                         Email
                                     </label>
                                 </div>
-                                <input type="email" name="email" id="email" placeholder="Your Email" className="w-full px-4 py-3 rounded-md border border-[#FF5400] focus:outline-none focus:ring  " />
+                                <input type="email" name="email" id="email" placeholder="Your Email" className="w-full px-4 py-3 rounded-md border border-[#076aa5] focus:outline-none focus:ring  " />
                             </div>
                             <div className="space-y-2 text-sm">
 
@@ -133,7 +133,7 @@ const Login = () => {
                                     </label>
                                 </div>
                                 <div className="relative ">
-                                    <input type={`${showPassword ? 'password' : 'text'}`} name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border border-[#FF5400] focus:outline-none focus:ring  " />
+                                    <input type={`${showPassword ? 'password' : 'text'}`} name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border border-[#076aa5] focus:outline-none focus:ring  " />
                                     <div className="absolute top-3 right-3 " onClick={() => setShowPassword(!showPassword)}>
                                         {showPassword ? <FaEyeSlash size="20" ></FaEyeSlash> : <FaEye size="20"></FaEye>}
                                     </div>
@@ -148,15 +148,15 @@ const Login = () => {
                             {/* Sign in Button */}
                             <button
                                 data-aos="flip-left"
-                                className="text-lg rounded-xl relative p-[10px] block w-full bg-[#FF5400] text-white border-y-4 duration-500 overflow-hidden focus:border-[#FF5400] group">
+                                className="text-lg rounded-xl relative p-[10px] block w-full bg-[#076aa5] text-white border-y-4 duration-500 overflow-hidden focus:border-[#076aa5] group">
                                 Log In
                                 <span className="absolute opacity-0 group-hover:opacity-100 duration-100 group-hover:duration-1000 ease-out flex justify-center inset-0 items-center  text-white">
                                     Let&apos;s go
                                 </span>
-                                <span className="bg-[#FF5400] absolute inset-0 -translate-y-full group-hover:translate-y-0 group-hover:duration-1000"></span>
-                                <span className="bg-[#FF5400] absolute inset-0 translate-y-full group-hover:translate-y-0 group-hover:duration-1000"></span>
-                                <span className="bg-[#FF5400] absolute inset-0 translate-x-full group-hover:translate-x-0 group-hover:delay-300 delay-100 duration-1000"></span>
-                                <span className="bg-[#FF5400] absolute inset-0 -translate-x-full group-hover:translate-x-0 group-hover:delay-300 delay-100 duration-1000"></span>
+                                <span className="bg-[#076aa5] absolute inset-0 -translate-y-full group-hover:translate-y-0 group-hover:duration-1000"></span>
+                                <span className="bg-[#076aa5] absolute inset-0 translate-y-full group-hover:translate-y-0 group-hover:duration-1000"></span>
+                                <span className="bg-[#076aa5] absolute inset-0 translate-x-full group-hover:translate-x-0 group-hover:delay-300 delay-100 duration-1000"></span>
+                                <span className="bg-[#076aa5] absolute inset-0 -translate-x-full group-hover:translate-x-0 group-hover:delay-300 delay-100 duration-1000"></span>
                             </button>
                         </form>
                         <div
@@ -184,7 +184,7 @@ const Login = () => {
                             data-aos="flip-left"
                             className="text-sm text-center gap-2 flex justify-center sm:px-6 ">
                             Don&apos;t have an account?
-                            <Link to="/register" className="underline hover:text-[#FF5400]">
+                            <Link to="/register" className="underline hover:text-[#076aa5]">
                                 Sign up
                             </Link>
                         </p>
