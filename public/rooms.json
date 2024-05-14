@@ -1,0 +1,351 @@
+[
+    {
+        "RoomDescription": "This spacious and luxurious beachfront villa offers breathtaking views of the ocean. With elegantly designed interiors and modern amenities, it provides the perfect setting for a relaxing getaway. Indulge in luxury with this modern apartment overlooking the waterfront. With sleek design and premium amenities, it offers a sophisticated urban lifestyle.",
+        "RoomTitle": "Reading Room",
+        "PricePerNight": 500,
+        "RoomSize": "3000 sqft",
+        "Availability": false,
+        "RoomImages": [
+            "https://i.ibb.co/k3LwX3C/folio-img2-1-1536x960.jpg",
+            "oceanfront2.jpg",
+            "oceanfront3.jpg"
+        ],
+        "SpecialOffers": "Stay 4 nights, pay for 3!",
+        "Location": "Dhaka",
+        "Status": "sale",
+        "Area": "5000 sqft",
+        "Facilities": [
+            "Infinity Pool",
+            "Private Beach Access",
+            "Gourmet Kitchen"
+        ],
+        "Utilities": [
+            "WiFi",
+            "Electricity",
+            "Water"
+        ]
+    },
+    {
+        "RoomDescription": "Indulge in luxury with this modern apartment overlooking the waterfront. With sleek design and premium amenities, it offers a sophisticated urban lifestyle. Indulge in luxury with this modern apartment overlooking the waterfront. With sleek design and premium amenities, it offers a sophisticated urban lifestyle.",
+        "RoomTitle": "Drawing Room",
+        "PricePerNight": 800,
+        "RoomSize": "1200 sqft",
+        "Availability": true,
+        "RoomImages": [
+            "https://i.ibb.co/k3LwX3C/folio-img2-1-1536x960.jpg",
+            "waterfront2.jpg",
+            "waterfront3.jpg"
+        ],
+        "SpecialOffers": null,
+        "Location": "China",
+        "Status": "rent",
+        "Area": "1800 sqft",
+        "Facilities": [
+            "Private Balcony",
+            "Fitness Center",
+            "Swimming Pool"
+        ],
+        "Utilities": [
+            "WiFi",
+            "Electricity",
+            "Water"
+        ]
+    }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://i.ibb.co/p00S6yS/villa-3-1.jpg
+https://i.ibb.co/tbF7rxb/villa-3-2.jpg
+https://i.ibb.co/4WcYWB2/villa-3-3.jpg
+https://i.ibb.co/mvZkFVf/pexels-photo-164522.jpg
+https://i.ibb.co/rQVkfWc/pexels-photo-259962.jpg
+https://i.ibb.co/K9ZwbkX/pexels-photo-271624.webp
+https://i.ibb.co/HG3bb27/pexels-photo-1438834.jpg
+https://i.ibb.co/VTcbnf6/pexels-photo-1571463.jpg
+https://i.ibb.co/NxKVK5M/pexels-photo-1643383.jpg
+https://i.ibb.co/J5KpNfW/office-10-1.webp
+https://i.ibb.co/J5KpNfW/office-10-1.webp
+https://i.ibb.co/m4Xr05X/restroom-1.webp
+https://i.ibb.co/jDkj3Vn/conference-11.webp
+https://i.ibb.co/XW3fGbN/pexels-photo-1732414.jpg
+https://i.ibb.co/945VDgV/pexels-photo-2121120.jpg
+https://i.ibb.co/5nRfLrt/office-5.webp
+https://i.ibb.co/GQ13QK6/office-7-1.webp
+
+
+
+[
+    {
+      "RoomDescription": "Luxurious beachfront villa with panoramic ocean views. Perfect for a serene getaway. Chic urban apartment with stunning city views. Ideal for modern city dwellers.",
+      "RoomTitle": "Oceanfront Villa",
+      "PricePerNight": 900,
+      "RoomSize": "4000 sqft",
+      "Availability": true,
+      "RoomImages": [
+        "https://i.ibb.co/7CWks6Z/Apartment-1-balcony.webp",
+        "https://i.ibb.co/BychfPr/Apartment-1-gym.webp",
+        "https://i.ibb.co/3FFHKQd/Apartment-1-swimming-pool.webp"
+      ],
+      "SpecialOffers": "Stay 5 nights, get 1 night free!",
+      "Location": "Maldives",
+      "Status": "sale",
+      "Area": "6000 sqft",
+      "Facilities": [
+        "Private Pool",
+        "Direct Beach Access",
+        "Gourmet Kitchen"
+      ],
+      "Utilities": [
+        "WiFi",
+        "Electricity",
+        "Water"
+      ]
+    },
+    {
+      "RoomDescription": "Chic urban apartment with stunning city views. Ideal for modern city dwellers. Secluded mountain cabin surrounded by nature. Perfect for a peaceful retreat.",
+      "RoomTitle": "Mountain Cabin",
+      "PricePerNight": 750,
+      "RoomSize": "1200 sqft",
+      "Availability": false,
+      "RoomImages": [
+        "https://i.ibb.co/3k9FC7R/conference-5.webp",
+        "https://i.ibb.co/DQHN9Wm/conference-6.webp",
+        "https://i.ibb.co/6JGDsF1/folio-img2-1-1536x960.jpg"
+      ],
+      "SpecialOffers": null,
+      "Location": "New York",
+      "Status": "rent",
+      "Area": "1800 sqft",
+      "Facilities": [
+        "Private Balcony",
+        "Fitness Center Access",
+        "24/7 Security"
+      ],
+      "Utilities": [
+        "WiFi",
+        "Electricity",
+        "Water"
+      ]
+    },
+    {
+      "RoomDescription": "Secluded mountain cabin surrounded by nature. Perfect for a peaceful retreat. Spacious lakeside cottage with serene water views. Perfect for a relaxing vacation.",
+      "RoomTitle": "Mountain Cabin",
+      "PricePerNight": 400,
+      "RoomSize": "800 sqft",
+      "Availability": true,
+      "RoomImages": [
+        "https://i.ibb.co/k2d39dH/folio-img6-q1mj9kalesdlng6uugfpqv9og5kb9w2agobtxu1xcg.jpg",
+        "https://i.ibb.co/LCB6bzn/folio-img7-1536x960.jpg",
+        "https://i.ibb.co/SsL0Lcq/general-hr-raw.jpg"
+      ],
+      "SpecialOffers": "Book 2 nights, get 50% off on the third night!",
+      "Location": "Switzerland",
+      "Status": "sale",
+      "Area": "1200 sqft",
+      "Facilities": [
+        "Fireplace",
+        "Hiking Trails Nearby",
+        "Outdoor Deck"
+      ],
+      "Utilities": [
+        "WiFi",
+        "Electricity",
+        "Water"
+      ]
+    },
+    {
+      "RoomDescription": "Spacious lakeside cottage with serene water views. Perfect for a relaxing vacation. Modern loft apartment with industrial-chic design. Ideal for urban living.",
+      "RoomTitle": "Lakeside Cottage",
+      "PricePerNight": 600,
+      "RoomSize": "1000 sqft",
+      "Availability": true,
+      "RoomImages": [
+        "https://i.ibb.co/M6T2KbG/Modern-townhome.webp",
+        "https://i.ibb.co/GQ13QK6/office-7-1.webp",
+        "https://i.ibb.co/VwtLFxT/office-15.webp"
+      ],
+      "SpecialOffers": "Early bird discount available!",
+      "Location": "Canada",
+      "Status": "rent",
+      "Area": "1500 sqft",
+      "Facilities": [
+        "Private Dock",
+        "Kayaks Available",
+        "Outdoor Dining Area"
+      ],
+      "Utilities": [
+        "WiFi",
+        "Electricity",
+        "Water"
+      ]
+    },
+    {
+      "RoomDescription": "Modern loft apartment with industrial-chic design. Ideal for urban living. Elegant country estate surrounded by lush greenery. Perfect for a luxurious escape.",
+      "RoomTitle": "Industrial Loft",
+      "PricePerNight": 850,
+      "RoomSize": "1500 sqft",
+      "Availability": false,
+      "RoomImages": [
+        "https://i.ibb.co/GnLpHHC/pexels-photo-2089698.jpg",
+        "https://i.ibb.co/LPDgfJ2/pexels-photo-2635038.webp",
+        "https://i.ibb.co/RNRggwX/pexels-photo-2988860.jpg"
+      ],
+      "SpecialOffers": null,
+      "Location": "Berlin",
+      "Status": "rent",
+      "Area": "2000 sqft",
+      "Facilities": [
+        "Exposed Brick Walls",
+        "Open Concept Layout",
+        "High Ceilings"
+      ],
+      "Utilities": [
+        "WiFi",
+        "Electricity",
+        "Water"
+      ]
+    },
+    {
+      "RoomDescription": "Elegant country estate surrounded by lush greenery. Perfect for a luxurious escape. Cozy seaside bungalow with stunning ocean views. Perfect for a romantic getaway.",
+      "RoomTitle": "Country Estate",
+      "PricePerNight": 1200,
+      "RoomSize": "5000 sqft",
+      "Availability": true,
+      "RoomImages": [
+        "https://i.ibb.co/TmPd9DP/restroom-4.webp",
+        "https://i.ibb.co/74Q4Lpr/villa-1-2.jpg",
+        "https://i.ibb.co/YDRGdcx/villa-2-1.jpg"
+      ],
+      "SpecialOffers": "Limited-time offer: 20% off for bookings made this month!",
+      "Location": "England",
+      "Status": "sale",
+      "Area": "7000 sqft",
+      "Facilities": [
+        "Private Gardens",
+        "Tennis Court",
+        "Wine Cellar"
+      ],
+      "Utilities": [
+        "WiFi",
+        "Electricity",
+        "Water"
+      ]
+    },
+    {
+      "RoomDescription": "Cozy seaside bungalow with stunning ocean views. Perfect for a romantic getaway. Stylish urban penthouse with panoramic city views. Perfect for luxury city living.",
+      "RoomTitle": "Seaside Bungalow",
+      "PricePerNight": 550,
+      "RoomSize": "700 sqft",
+      "Availability": true,
+      "RoomImages": [
+        "https://i.ibb.co/zVfJvR6/pexels-pixabay-164558.jpg",
+        "https://i.ibb.co/RNRggwX/pexels-photo-2988860.jpg",
+        "https://i.ibb.co/0JhMxN1/conference-3.webp"
+      ],
+      "SpecialOffers": "Book now and receive complimentary breakfast for two!",
+      "Location": "Australia",
+      "Status": "sale",
+      "Area": "1000 sqft",
+      "Facilities": [
+        "Private Beach Access",
+        "Outdoor Shower",
+        "Sun Deck"
+      ],
+      "Utilities": [
+        "WiFi",
+        "Electricity",
+        "Water"
+      ]
+    },
+    {
+      "RoomDescription": "Stylish urban penthouse with panoramic city views. Perfect for luxury city living. Rustic farmhouse surrounded by picturesque countryside. Perfect for a tranquil retreat.",
+      "RoomTitle": "Urban Penthouse",
+      "PricePerNight": 950,
+      "RoomSize": "2000 sqft",
+      "Availability": false,
+      "RoomImages": [
+        "https://i.ibb.co/3WjHsr8/villa-1-1.jpg",
+        "https://i.ibb.co/HDXZQ1S/villa-1-3.jpg",
+        "https://i.ibb.co/5RrBjsX/office-17.webp"
+      ],
+      "SpecialOffers": null,
+      "Location": "Tokyo",
+      "Status": "rent",
+      "Area": "3000 sqft",
+      "Facilities": [
+        "Private Terrace",
+        "Jacuzzi",
+        "Home Theater"
+      ],
+      "Utilities": [
+        "WiFi",
+        "Electricity",
+        "Water"
+      ]
+    },
+    {
+      "RoomDescription": "Rustic farmhouse surrounded by picturesque countryside. Perfect for a tranquil retreat. Tranquil forest retreat surrounded by lush greenery. Perfect for nature lovers.",
+      "RoomTitle": "Countryside Farmhouse",
+      "PricePerNight": 500,
+      "RoomSize": "2500 sqft",
+      "Availability": true,
+      "RoomImages": [
+        "https://i.ibb.co/RTKZK75/villa-2-2.jpg",
+        "https://i.ibb.co/hfxWfTt/villa-2-3.jpg",
+        "https://i.ibb.co/znPLsKn/villa-8-1.jpg"
+      ],
+      "SpecialOffers": "Family-friendly offer: Children stay for free!",
+      "Location": "Italy",
+      "Status": "sale",
+      "Area": "4000 sqft",
+      "Facilities": [
+        "Outdoor Patio",
+        "Vegetable Garden",
+        "Fire Pit"
+      ],
+      "Utilities": [
+        "WiFi",
+        "Electricity",
+        "Water"
+      ]
+    },
+    {
+      "RoomDescription": "Tranquil forest retreat surrounded by lush greenery. Perfect for nature lovers.",
+      "RoomTitle": "Forest Retreat",
+      "PricePerNight": 450,
+      "RoomSize": "800 sqft",
+      "Availability": true,
+      "RoomImages": [
+        "https://i.ibb.co/Dbn6d1W/villa-8-2.jpg",
+        "https://i.ibb.co/gzhx2CJ/villa-8-3-1.jpg",
+        "https://i.ibb.co/gzhx2CJ/villa-8-3-1.jpg"
+      ],
+      "SpecialOffers": "Book now and receive a complimentary guided nature walk!",
+      "Location": "Canada",
+      "Status": "rent",
+      "Area": "1200 sqft",
+      "Facilities": [
+        "Private Deck",
+        "Hiking Trails Nearby",
+        "Fireplace"
+      ],
+      "Utilities": [
+        "WiFi",
+        "Electricity",
+        "Water"
+      ]
+    }
+  ]
+  

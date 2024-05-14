@@ -66,7 +66,7 @@ const MyBooking = () => {
     // data update korar jonno useMutation function use korbo
     const { mutateAsync } = useMutation({
         mutationFn: async (room) => {
-            const { data } = await axios.put(`https://assignment-eleven-server-delta.vercel.app/rooms/${room.roomId}`, updateAvailability)
+            const { data } = await axios.put(`http://localhost:5000/rooms/${room.roomId}`, updateAvailability)
             console.log(data)
         },
         onSuccess: () => {
@@ -101,7 +101,7 @@ const MyBooking = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    axios.delete(`https://assignment-eleven-server-delta.vercel.app/bookingRoom/${room._id}`)
+                    axios.delete(`http://localhost:5000/bookingRoom/${room._id}`)
                         .then(res => {
                             if (res.data.deletedCount) {
                                 console.log(res.data)
@@ -117,10 +117,10 @@ const MyBooking = () => {
             });
 
     }
-
+    
     const handleUpdate = (id) => {
         console.log("dialog theke asa id", id)
-        axios.put(`https://assignment-eleven-server-delta.vercel.app/bookingRoom/${id}`, { updateBookingDate })
+        axios.put(`http://localhost:5000/bookingRoom/${id}`, { updateBookingDate })
             .then(res => {
                 if (res.data.modifiedCount) {
                     console.log(res.data)
@@ -136,11 +136,25 @@ const MyBooking = () => {
     }
 
 
-    if (loading) {
-        return "Loading......."
-    }
+    // if (loading) {
+    //     return "Loading......."
+    // }
     if (isLoading) {
-        return "tantak er  Loading......."
+        return <div className="max-w-[700px] w-full bg-white animate-pulse flex justify-center flex-col items-start mx-auto p-6 rounded-md shadow-xl">
+            {/* User profile  Skeleton */}
+            <div className="w-full flex gap-2 items-center">
+                <div className="w-16 h-16 rounded-full bg-gray-300 animate-pulse"></div>
+                <div className="w-[80%]">
+                    <div className="w-[30%] rounded-full bg-gray-300 h-[15px] mb-3"></div>
+                    <div className="w-[40%] rounded-full bg-gray-300 h-[15px]"></div>
+                </div>
+            </div>
+            {/* user post skeleton */}
+            <div className="mt-8 w-full">
+                <div className="w-full rounded-full bg-gray-300 h-[15px] mb-3"></div>
+                <div className="w-[90%] rounded-full bg-gray-300 h-[15px]"></div>
+            </div>
+        </div>
     }
 
     return (

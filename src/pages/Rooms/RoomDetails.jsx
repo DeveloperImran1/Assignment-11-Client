@@ -64,7 +64,8 @@ const RoomDetails = () => {
     const { isPending, isError, error, data: room = {}, refetch } = useQuery({
         queryKey: ["singleRoom"],
         queryFn: async () => {
-            const res = await fetch(`https://assignment-eleven-server-delta.vercel.app/rooms/${id}`);
+            // const res = await fetch(`http://localhost:5000/rooms/${id}`);
+            const res = await fetch(`http://localhost:5000/rooms/${id}`);
             return res.json()
         }
     })
@@ -80,7 +81,7 @@ const RoomDetails = () => {
 
     // get review for this room
     useEffect(() => {
-        axios(`https://assignment-eleven-server-delta.vercel.app/review/${_id}`)
+        axios(`http://localhost:5000/review/${_id}`)
             .then(res => {
                 console.log(res.data)
                 setClients(res.data)
@@ -127,11 +128,11 @@ const RoomDetails = () => {
             .then((willDelete) => {
                 console.log(willDelete)
                 if (willDelete) {
-                    axios.post("https://assignment-eleven-server-delta.vercel.app/bookingRooms", bookignData)
+                    axios.post("http://localhost:5000/bookingRooms", bookignData)
                         .then(res => {
                             if (res.data.acknowledged) {
                                 console.log("booking hoisa", res.data)
-                                axios.put(`https://assignment-eleven-server-delta.vercel.app/rooms/${_id}`, updateAvailability)
+                                axios.put(`http://localhost:5000/rooms/${_id}`, updateAvailability)
                                     .then(res => {
                                         console.log(res.data)
                                         if (res.data.modifiedCount) {
@@ -204,8 +205,8 @@ const RoomDetails = () => {
                         </div>
 
                         {/* <img alt="" className="w-full  h-full lg:[200px]  rounded shadow-sm lg:col-span-2 lg:row-span-2  dark:bg-gray-500 " src={`https://i.ibb.co/k3LwX3C/folio-img2-1-1536x960.jpg`} /> */}
-                        <img alt="" className="w-full h-full lg:[200px] lg:row-span-1 rounded shadow-sm  dark:bg-gray-500 " src="https://i.ibb.co/k3LwX3C/folio-img2-1-1536x960.jpg" />
-                        <img alt="" className="w-full  h-full lg:[200px] lg:row-span-1 rounded shadow-sm  dark:bg-gray-500 " src="https://i.ibb.co/k3LwX3C/folio-img2-1-1536x960.jpg" />
+                        <img alt="" className="w-full h-full lg:[200px] lg:row-span-1 rounded shadow-sm  dark:bg-gray-500 " src={RoomImages?.[1]} />
+                        <img alt="" className="w-full  h-full lg:[200px] lg:row-span-1 rounded shadow-sm  dark:bg-gray-500 " src={RoomImages?.[2]} />
 
                     </div>
 

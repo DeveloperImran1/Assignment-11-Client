@@ -63,13 +63,13 @@ const AuthProvider = ({ children }) => {
             const loggedUser = { email: currentUser?.email };
             // if user thakle token create korbo
             if (currentUser) {
-                axios.post('https://assignment-eleven-server-delta.vercel.app/jwt', loggedUser, { withCredentials: true })
+                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log("Token responce", res.data)
                     })
             }
             else{
-                axios.post('https://assignment-eleven-server-delta.vercel.app/logout', loggedUser, {withCredentials: true})
+                axios.post('http://localhost:5000/logout', loggedUser, {withCredentials: true})
                 .then(res => {
                     console.log(res.data)
                 })

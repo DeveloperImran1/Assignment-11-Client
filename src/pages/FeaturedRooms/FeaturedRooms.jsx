@@ -16,7 +16,7 @@ const FeaturedRooms = () => {
     const [allRooms, setRooms] = useState([]);
     useEffect(() => {
 
-        axios("https://assignment-eleven-server-delta.vercel.app/rooms")
+        axios("http://localhost:5000/rooms")
             .then(res => {
                 console.log(res.data)
                 setRooms(res.data)

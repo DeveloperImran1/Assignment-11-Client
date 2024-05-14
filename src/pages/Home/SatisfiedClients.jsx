@@ -9,7 +9,7 @@ const SatisfiedClients = () => {
     const [icons, setIcons] = useState([]);
 
     useEffect(() => {
-        axios(`https://assignment-eleven-server-delta.vercel.app/reviews`)
+        axios(`http://localhost:5000/reviews`)
             .then(res => {
                 console.log(res.data)
                 setClients(res.data)

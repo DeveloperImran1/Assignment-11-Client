@@ -24,8 +24,27 @@ const Rooms = () => {
     const [availableRooms, setAvailableRooms] = useState([]);
     const [specialOffer, setSpecialOffers] = useState([]);
     const [sort, setSort] = useState("");
+    const [from, setFrom] = useState(0)
+    const [to, setTo] = useState(0)
 
-    const url = `https://assignment-eleven-server-delta.vercel.app/rooms?sort=${sort}`;
+    const handleFilter = (e) => {
+        e.preventDefault();
+        const from = e.target.from.value;
+        const to = e.target.to.value;
+        if (!from) {
+            return alert("from dita hobe")
+        }
+        if (!to) {
+            return alert("to dita hobe")
+        }
+        setFrom(from)
+        setTo(to)
+
+        console.log(from, to)
+    }
+
+    const url = `http://localhost:5000/rooms?sort=${sort}&from=${from}&to=${to}`;
+    // const url = `http://localhost:5000/rooms?sort=${sort}`;
     const { isPending, isError, error, data: allRooms = [], refetch } = useQuery({
         queryKey: ["rooms"],
         queryFn: async () => {
@@ -36,8 +55,9 @@ const Rooms = () => {
     useEffect(() => {
         refetch()
 
-    }, [pathname, sort, refetch])
+    }, [pathname, sort, refetch, from, to])
 
+    console.log(allRooms)
     useEffect(() => {
 
         if (allRooms.length > 0) {
@@ -46,7 +66,7 @@ const Rooms = () => {
             const offers = allRooms?.filter(room => room?.SpecialOffers);
             setSpecialOffers(offers)
 
-            console.log("tantak er allRooms", allRooms, "available rooms", availableRooms, "specialOfer", specialOffer)
+            // console.log("tantak er allRooms", allRooms, "available rooms", availableRooms, "specialOfer", specialOffer)
 
         }
 
@@ -66,7 +86,7 @@ const Rooms = () => {
             <Helmet>
                 <title>RoomIntel || Rooms</title>
             </Helmet>
-            <div className="flex justify-between" >
+            <div className="flex flex-col lg:flex-row justify-between mb-3" >
                 <p></p>
                 <div className="flex justify-center items-center gap-4" >
                     <div className="text-gray-700" >
@@ -84,6 +104,14 @@ const Rooms = () => {
                             <option value='dsc'>Descending Order</option>
                             <option value='asc'>Ascending Order</option>
                         </select>
+                    </div>
+                    <div className="text-gray-700 " >
+                        <form onSubmit={handleFilter} className="flex flex-col lg:flex-row gap-3" >
+                            <input type="number" placeholder="Minimum Price" name="from" className="rounded-lg border border-[#1B8EF8] bg-transparent px-4 py-2 w-[160px] text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2"/>
+                            <input type="number" placeholder="Maximum Price" name="to" className="rounded-lg border border-[#1B8EF8] bg-transparent px-4 py-2 w-[160px] text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" />
+                            <button type="submit" className="rounded-lg hover:rounded-full w-[160px]  border-2 border-[#076aa5] px-8 py-2 text-xl text-sky-500 duration-200 bg-[#076aa5] hover:bg-[#029cfb] text-white">Search</button>
+
+                        </form>
                     </div>
                     <ButtonGroup className=" flex justify-center items-center">
                         <Button onClick={() => setValue(!on)} className={`${on ? "bg-[#23BE0A]" : "bg-[#59C6D2]"}`} ><IoGrid /></Button>

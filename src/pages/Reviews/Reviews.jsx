@@ -52,7 +52,7 @@ const Reviews = () => {
         const message = e.target.message.value;
         const reviewObj = { message, rating, email, photoURL, date, userName, RoomId }
         console.log(reviewObj)
-        axios.post(`https://assignment-eleven-server-delta.vercel.app/reviews`, reviewObj)
+        axios.post(`http://localhost:5000/reviews`, reviewObj)
             .then(res => {
                 if (res.data.acknowledged) {
                     reviewSuccess()
