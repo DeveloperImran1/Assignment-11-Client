@@ -15,6 +15,17 @@ import { FcElectricity } from "react-icons/fc";
 import LoadingCard from "../../components/LoadingCard";
 import EmptyData from "../../components/EmptyData";
 import { Helmet } from "react-helmet-async";
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
+// react toast: 
+const minimumPriceError = () => toast.error("Mustbe Added Minimum Price!");
+const maximumPriceError = () => toast.error("Mustbe Added Maximum Price!");
+
+
 const Rooms = () => {
 
     // tantak query dia fetching
@@ -32,10 +43,10 @@ const Rooms = () => {
         const from = e.target.from.value;
         const to = e.target.to.value;
         if (!from) {
-            return alert("from dita hobe")
+            return minimumPriceError()
         }
         if (!to) {
-            return alert("to dita hobe")
+            return maximumPriceError()
         }
         setFrom(from)
         setTo(to)
@@ -60,7 +71,7 @@ const Rooms = () => {
     console.log(allRooms)
     useEffect(() => {
 
-        if (allRooms.length > 0) {
+        // if (allRooms.length > 0) {
             const available = allRooms?.filter(room => room?.Availability === true);
             setAvailableRooms(available)
             const offers = allRooms?.filter(room => room?.SpecialOffers);
@@ -68,7 +79,7 @@ const Rooms = () => {
 
             // console.log("tantak er allRooms", allRooms, "available rooms", availableRooms, "specialOfer", specialOffer)
 
-        }
+        // }
 
     }, [allRooms, availableRooms, specialOffer])
     // console.log("all Rooms latest", allRooms)
@@ -89,6 +100,14 @@ const Rooms = () => {
             <div className="flex flex-col lg:flex-row justify-between mb-3" >
                 <p></p>
                 <div className="flex justify-center items-center gap-4" >
+                    <div className="text-gray-700 " >
+                        <form onSubmit={handleFilter} className="flex flex-col lg:flex-row gap-3" >
+                            <input type="number" placeholder="Minimum Price" name="from" className="rounded-lg border border-[#1B8EF8] bg-transparent px-4 py-2 w-[160px] text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" />
+                            <input type="number" placeholder="Maximum Price" name="to" className="rounded-lg border border-[#1B8EF8] bg-transparent px-4 py-2 w-[160px] text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" />
+                            <button type="submit" className="rounded-lg hover:rounded-full w-[160px]  border-2 border-[#076aa5] px-8 py-2 text-xl text-sky-500 duration-200 bg-[#076aa5] hover:bg-[#029cfb] text-white">Search</button>
+
+                        </form>
+                    </div>
                     <div className="text-gray-700" >
                         <select
                             onChange={e => {
@@ -105,14 +124,7 @@ const Rooms = () => {
                             <option value='asc'>Ascending Order</option>
                         </select>
                     </div>
-                    <div className="text-gray-700 " >
-                        <form onSubmit={handleFilter} className="flex flex-col lg:flex-row gap-3" >
-                            <input type="number" placeholder="Minimum Price" name="from" className="rounded-lg border border-[#1B8EF8] bg-transparent px-4 py-2 w-[160px] text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2"/>
-                            <input type="number" placeholder="Maximum Price" name="to" className="rounded-lg border border-[#1B8EF8] bg-transparent px-4 py-2 w-[160px] text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" />
-                            <button type="submit" className="rounded-lg hover:rounded-full w-[160px]  border-2 border-[#076aa5] px-8 py-2 text-xl text-sky-500 duration-200 bg-[#076aa5] hover:bg-[#029cfb] text-white">Search</button>
 
-                        </form>
-                    </div>
                     <ButtonGroup className=" flex justify-center items-center">
                         <Button onClick={() => setValue(!on)} className={`${on ? "bg-[#23BE0A]" : "bg-[#59C6D2]"}`} ><IoGrid /></Button>
                         <Button onClick={() => setValue(!on)} className={`${on ? "bg-[#59C6D2]" : "bg-[#23BE0A]"}`} ><FaTableList /></Button>
@@ -211,7 +223,7 @@ const Rooms = () => {
                                             <tr className={`border-b text-sm font-normal border-opacity-20 dark:border-gray-300 dark:bg-gray-50 ${i % 2 === 0 ? 'bg-blue-100/60' : 'bg-pink-100/60'}`}>
                                                 <th>{i + 1}</th>
                                                 <td className="p-3">
-                                                    <img className="size-[80px] bg-slate-500 object-cover rounded-lg hover:blur-[2px] duration-500" src="https://source.unsplash.com/300x300/?profile" alt="avatar navigate ui" />
+                                                    <img className="size-[80px] bg-slate-500 object-cover rounded-lg hover:blur-[2px] duration-500" src={room?.RoomImages?.[0]} alt="avatar navigate ui" />
 
                                                 </td>
                                                 <td className="p-3">
@@ -283,7 +295,7 @@ const Rooms = () => {
                                             <tr className={`border-b text-sm font-normal border-opacity-20 dark:border-gray-300 dark:bg-gray-50 ${i % 2 === 0 ? 'bg-blue-100/60' : 'bg-pink-100/60'}`}>
                                                 <th>{i + 1}</th>
                                                 <td className="p-3">
-                                                    <img className="size-[80px] bg-slate-500 object-cover rounded-lg hover:blur-[2px] duration-500" src="https://source.unsplash.com/300x300/?profile" alt="avatar navigate ui" />
+                                                    <img className="size-[80px] bg-slate-500 object-cover rounded-lg hover:blur-[2px] duration-500" src={room?.RoomImages?.[0]} alt="avatar navigate ui" />
 
                                                 </td>
                                                 <td className="p-3">
@@ -355,7 +367,7 @@ const Rooms = () => {
                                             <tr className={`border-b text-sm font-normal border-opacity-20 dark:border-gray-300 dark:bg-gray-50 ${i % 2 === 0 ? 'bg-blue-100/60' : 'bg-pink-100/60'}`}>
                                                 <th>{i + 1}</th>
                                                 <td className="p-3">
-                                                    <img className="size-[80px] bg-slate-500 object-cover rounded-lg hover:blur-[2px] duration-500" src="https://source.unsplash.com/300x300/?profile" alt="avatar navigate ui" />
+                                                    <img className="size-[80px] bg-slate-500 object-cover rounded-lg hover:blur-[2px] duration-500" src={room?.RoomImages?.[0]} alt="avatar navigate ui" />
 
                                                 </td>
                                                 <td className="p-3">

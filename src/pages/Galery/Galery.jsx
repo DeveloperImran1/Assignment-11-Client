@@ -17,29 +17,29 @@ const Galery = () => {
 
                     <div className="diff  w-full transition  border-2 hover:border-[#23BE0A] h-full col-span-2 row-span-2 rounded shadow-sm min-h-96 md:col-start-3 md:row-start-1 dark:bg-gray-500 aspect-square">
                         <div className="diff-item-1">
-                            <img alt="daisy" src="https://img.daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a.jpg" />
+                            <img alt="daisy" src="https://i.ibb.co/p00S6yS/villa-3-1.jpg" />
                         </div>
                         <div className="diff-item-2">
-                            <img alt="daisy" className="blur " src="https://i.ibb.co/G3b5XZs/morgan-housel-a-Z-Mm-Sm-Acjg-unsplash.jpg" />
+                            <img alt="daisy" className="blur " src="https://i.ibb.co/p00S6yS/villa-3-1.jpg" />
                         </div>
                         <div className="diff-resizer"></div>
                     </div>
                     {/* <img src="https://i.ibb.co/gzp3JYF/sincerely-media-CXYPfveiuis-unsplash.jpg" alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full col-span-2 row-span-2 rounded shadow-sm min-h-96 md:col-start-3 md:row-start-1 dark:bg-gray-500 aspect-square" /> */}
 
-                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/W0jZpyw/ashkan-forouzani-Gg-UOhg-Sk-Lc4-unsplash.jpg" />
-                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/FnpbGt6/rain-bennett-7-Nir5-XIRVM-unsplash.jpg" />
-                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/hFwN1QH/jeet-dhanoa-t-GHk-C5nt-UGc-unsplash.jpg" />
-                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/Svk4VLN/pngwing-1.png" />
-                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/JCDYP9y/aaron-burden-9zs-HNt5-Opq-E-unsplash.jpg" />
-                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/Qf5QCDY/surja-sen-das-raj-JIWPWc-Unh-Us-unsplash.jpg" />
-                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/fdmYs7S/ha-nguy-n-2s1c-B4-QRid4-unsplash.jpg" />
-                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/DLVc6zJ/studio-media-9-Da-OYUYn-Ols-unsplash.jpg" />
+                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/tbF7rxb/villa-3-2.jpg" />
+                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/4WcYWB2/villa-3-3.jpg" />
+                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/mvZkFVf/pexels-photo-164522.jpg" />
+                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/rQVkfWc/pexels-photo-259962.jpg" />
+                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/K9ZwbkX/pexels-photo-271624.webp" />
+                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/VTcbnf6/pexels-photo-1571463.jpg" />
+                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/NxKVK5M/pexels-photo-1643383.jpg" />
+                    <img alt="" className="w-full transition hover:scale-105 border-2 hover:border-[#23BE0A] h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" src="https://i.ibb.co/J5KpNfW/office-10-1.webp" />
                     <div className="diff aspect-[16/9] w-full transition border-2 hover:border-[#23BE0A] h-full col-span-2 row-span-2 rounded shadow-sm min-h-96 md:col-start-1 md:row-start-3 dark:bg-gray-500 ">
                         <div className="diff-item-1">
-                            <img alt="daisy" src="https://img.daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a.jpg" />
+                            <img alt="daisy" src="https://i.ibb.co/J5KpNfW/office-10-1.webp" />
                         </div>
                         <div className="diff-item-2">
-                            <img alt="daisy" className="blur " src="https://i.ibb.co/G3b5XZs/morgan-housel-a-Z-Mm-Sm-Acjg-unsplash.jpg" />
+                            <img alt="daisy" className="blur " src="https://i.ibb.co/J5KpNfW/office-10-1.webp" />
                         </div>
                         <div className="diff-resizer"></div>
                     </div>
@@ -52,3 +52,21 @@ const Galery = () => {
 };
 
 export default Galery;
+
+
+
+
+
+
+
+
+
+
+
+
+// https://i.ibb.co/m4Xr05X/restroom-1.webp
+// https://i.ibb.co/jDkj3Vn/conference-11.webp
+// https://i.ibb.co/XW3fGbN/pexels-photo-1732414.jpg
+// https://i.ibb.co/945VDgV/pexels-photo-2121120.jpg
+// https://i.ibb.co/5nRfLrt/office-5.webp
+// https://i.ibb.co/GQ13QK6/office-7-1.webp

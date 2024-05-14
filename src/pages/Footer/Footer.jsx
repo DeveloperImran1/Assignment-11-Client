@@ -9,6 +9,8 @@ const Footer = () => {
         <NavLink to="/rooms" ><a className="link link-hover">Rooms</a></NavLink>
         <NavLink to="/myBooking" ><a className="link link-hover">My Booking</a></NavLink>
         <NavLink to="/bookMarks" ><a className="link link-hover">Bookmarks</a></NavLink>
+        <NavLink to="/login" ><a className="link link-hover">Login</a></NavLink>
+        <NavLink to="/register" ><a className="link link-hover">Register</a></NavLink>
         {/* <NavLink to="/userProfile" ><a className="link link-hover">Profile</a></NavLink> */}
 
       </nav>

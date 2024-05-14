@@ -36,7 +36,7 @@ const MyBooking = () => {
     const { user, loading, setCurrentRoom } = useContext(AuthContext);
     // const [myRoom, setMyRoom] = useState([])
     const [startDate, setStartDate] = useState(new Date());
-
+    const [currentId, setCurrentId] = useState(0)
 
     const updateBookingDate = startDate;
     console.log("Modaler date", updateBookingDate)
@@ -86,7 +86,7 @@ const MyBooking = () => {
     const handleDelete = (room, date) => {
         const bookDate = new Date(date).getTime();
         const todayDate = new Date().getTime();
-        const compareDate = todayDate - bookDate;
+        const compareDate = bookDate - todayDate;
         if (compareDate < 86400000) {
             return deleteError()
         }
@@ -117,10 +117,14 @@ const MyBooking = () => {
             });
 
     }
-    
-    const handleUpdate = (id) => {
-        console.log("dialog theke asa id", id)
-        axios.put(`http://localhost:5000/bookingRoom/${id}`, { updateBookingDate })
+    // update er jonno
+    const modalOpen = (thisId) => {
+        handleOpen()
+        setCurrentId(thisId)
+    }
+    const handleUpdate = () => {
+        console.log("dialog theke asa id", currentId)
+        axios.put(`http://localhost:5000/bookingRoom/${currentId}`, { updateBookingDate })
             .then(res => {
                 if (res.data.modifiedCount) {
                     console.log(res.data)
@@ -207,7 +211,7 @@ const MyBooking = () => {
                                 <td className="">
                                     <Link  >
 
-                                        <button onClick={handleOpen} className="btn btn-sm ml-2 bg-[#076aa5]"><MdOutlineUpdate /></button>
+                                        <button onClick={() => modalOpen(room?._id)} className="btn btn-sm ml-2 bg-[#076aa5]"><MdOutlineUpdate /></button>
                                     </Link>
                                 </td>
                                 <td className="">
@@ -232,6 +236,9 @@ const MyBooking = () => {
                                         <Typography className="-mb-2" variant="h6">
                                             Pick a Update Date
                                         </Typography>
+                                        <Typography className="-mb-2" variant="h6">
+                                            Aitar id: {currentId}
+                                        </Typography>
                                         <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 border border-[#5A5A5D] p-2 focus:dark:ring-violet-600 dark:bg-gray-100" />
                                         <div>
                                             <img src={`${room?.RoomImages?.[0] || "https://i.ibb.co/k3LwX3C/folio-img2-1-1536x960.jpg"}`} alt="" />
@@ -240,7 +247,7 @@ const MyBooking = () => {
                                             <Checkbox required label="Remember Me" />
                                         </div>
                                     </CardBody>
-                                    <CardFooter onClick={() => handleUpdate(room?._id)} className="pt-0">
+                                    <CardFooter onClick={handleUpdate} className="pt-0">
                                         <Button variant="gradient" onClick={handleOpen} fullWidth>
                                             Update
                                         </Button>

@@ -9,6 +9,8 @@ import { Tooltip } from 'react-tooltip'
 // react tostify
 import toast from "react-hot-toast";
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { HiOutlineLogout } from "react-icons/hi";
+// import { GiSelfLove } from "react-icons/gi";
 
 
 
@@ -89,7 +91,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <nav className="flex items-center justify-between  px-4 py-2 leading-none dark:text-white pt-[20px] dark:bg-black  font-bold ">
+            <nav className="flex items-center justify-between  px-1 py-2 leading-none dark:text-white pt-[20px] dark:bg-black  font-[600px] ">
                 {/* <nav className="flex items-center justify-between bg-gradient-to-t from-[#487497] to-[#004e81]  px-4 py-2 text-black pt-[30px]  "> */}
                 <NavLink to="/"  >
                     <div className="scale-100 cursor-pointer rounded-2xl px-3 py-2 text-xl flex justify-center items-center font-semibold leading-none dark:text-white transition-all duration-200 hover:scale-110">
@@ -97,7 +99,7 @@ const Navbar = () => {
                         <h2 className='text-[30px] font-bold hidden lg:flex leading-none dark:text-white' >Room<span className='text-[#076aa5]' >Intel</span></h2>
                     </div>
                 </NavLink>
-                <ul className="hidden items-center justify-between gap-10 lg:flex">
+                <ul className="hidden items-center justify-between gap-6 lg:flex">
                     <NavLink to="/" className={({ isActive }) => isActive ? 'text-[#076aa5]' : 'leading-none dark:text-white'} >
                         <li className="group flex cursor-pointer flex-col">
                             Home<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
@@ -119,6 +121,7 @@ const Navbar = () => {
                             </NavLink>
                             <NavLink to="/bookmarks" className={({ isActive }) => isActive ? 'text-[#076aa5]' : 'leading-none dark:text-white'}  >
                                 <li className="group flex  cursor-pointer flex-col  ">
+                                {/* <GiSelfLove /> */}
                                     Bookmarks<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                                 </li>
                             </NavLink>
@@ -250,14 +253,17 @@ const Navbar = () => {
                                 className="relative group">
                                 <Link to="/userProfile" >
 
-                                    <img className="size-[55px]  bg-slate-500 object-cover rounded-full" src={user.photoURL || "https://source.unsplash.com/300x300/?profile"} alt="avatar navigate ui" />
+                                    <img className="size-[55px]  bg-slate-500 object-cover rounded-full" src={user.photoURL || "https://i.ibb.co/SddgFVV/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo.png"} alt={user.displayName} />
                                 </Link>
                                 <span className="size-4 bg-green-500 absolute rounded-full bottom-2 right-0 border-[3px] border-white"></span>
                                 <span className="size-4 bg-green-500 absolute rounded-full bottom-2 right-0 animate-ping"></span>
                                 <Tooltip id="my-tooltip" />
                             </div>
 
-                            <button onClick={handleLogout} className="rounded-lg border-2 border-sky-500 px-5 py-2 text-xl text-sky-500 duration-200 hover:bg-[#076aa5] hover:text-white">Logout</button>
+                            <button onClick={handleLogout} className="rounded-lg flex items-center gap-1 border-2 border-sky-500 px-5 py-2 text-xl text-sky-500 duration-200 hover:bg-[#076aa5] hover:text-white">
+                                <span>Logout</span>
+                                <HiOutlineLogout />
+                            </button>
 
 
                         </div> : <div className='flex justify-center items-center gap-2' >

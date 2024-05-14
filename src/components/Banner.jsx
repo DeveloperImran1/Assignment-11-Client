@@ -20,8 +20,8 @@ const Banner = () => {
             <div className='flex flex-col mt-8 lg:mt-0 gap-7 space-y-6 z-10 justify-center ml-10' >
                 <h1 className=' text-xl lg:text-2xl font-semibold text-white' >Explore Buying, Renting, Investing Opportunities!</h1>
                 <h1 className='text-4xl lg:text-7xl font-bold text-white'>Hunt Your <br /> Dream Home</h1>
-                <Link>
-                    <button className="rounded-lg hover:rounded-full border-2 border-[#076aa5] px-8 py-2 text-xl text-sky-500 duration-200 bg-[#076aa5] hover:bg-[#029cfb] text-white">Login</button>
+                <Link to="/rooms" >
+                    <button className="rounded-lg hover:rounded-full border-2 border-[#076aa5] px-8 py-2 text-xl text-sky-500 duration-200 bg-[#076aa5] hover:bg-[#029cfb] text-white">Get Started</button>
                 </Link>
             </div>
 
