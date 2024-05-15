@@ -8,6 +8,8 @@ import 'swiper/css/navigation';
 
 
 
+
+
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Link } from 'react-router-dom';
@@ -41,16 +43,16 @@ const Banner = () => {
                 className="mySwiper rounded-[16px] w-[80%] lg:w-[46%] h-[80%] lg:h-[60%] mt-[50px]"
             >
                 <SwiperSlide>
-                    <img src="https://i.ibb.co/ryVDcqF/folio-img7-1536x960.jpg" alt="" />
+                    <img src="https://i.ibb.co/b7xDNYZ/florian-schmidinger-b-79n-Oqf95-I-unsplash.jpg" alt="" className='rounded-[16px]' />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="https://i.ibb.co/ryVDcqF/folio-img7-1536x960.jpg" alt="" />
+                    <img src="https://i.ibb.co/n67QY5p/frames-for-your-heart-m-R1-CIDdu-GLc-unsplash.jpg" alt="" className='rounded-[16px]' />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="https://i.ibb.co/ryVDcqF/folio-img7-1536x960.jpg" alt="" />
+                    <img src="https://i.ibb.co/Xyp9HmY/digital-marketing-agency-ntwrk-g39p1k-Djv-SY-unsplash.jpg" alt="" className='rounded-[16px]'  />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="https://i.ibb.co/ryVDcqF/folio-img7-1536x960.jpg" alt="" />
+                    <img src="https://i.ibb.co/p00S6yS/villa-3-1.jpg" alt="" className='rounded-[16px]'  />
                 </SwiperSlide>
 
 

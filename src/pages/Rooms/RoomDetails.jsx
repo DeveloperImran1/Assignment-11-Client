@@ -64,8 +64,8 @@ const RoomDetails = () => {
     const { isPending, isError, error, data: room = {}, refetch } = useQuery({
         queryKey: ["singleRoom"],
         queryFn: async () => {
-            // const res = await fetch(`http://localhost:5000/rooms/${id}`);
-            const res = await fetch(`http://localhost:5000/rooms/${id}`);
+            // const res = await fetch(`https://assignment-eleven-server-delta.vercel.app/rooms/${id}`);
+            const res = await fetch(`https://assignment-eleven-server-delta.vercel.app/rooms/${id}`);
             return res.json()
         }
     })
@@ -81,7 +81,7 @@ const RoomDetails = () => {
 
     // get review for this room
     useEffect(() => {
-        axios(`http://localhost:5000/review/${_id}`)
+        axios(`https://assignment-eleven-server-delta.vercel.app/review/${_id}`)
             .then(res => {
                 console.log(res.data)
                 setClients(res.data)
@@ -128,11 +128,11 @@ const RoomDetails = () => {
             .then((willDelete) => {
                 console.log(willDelete)
                 if (willDelete) {
-                    axios.post("http://localhost:5000/bookingRooms", bookignData)
+                    axios.post("https://assignment-eleven-server-delta.vercel.app/bookingRooms", bookignData)
                         .then(res => {
                             if (res.data.acknowledged) {
                                 console.log("booking hoisa", res.data)
-                                axios.put(`http://localhost:5000/rooms/${_id}`, updateAvailability)
+                                axios.put(`https://assignment-eleven-server-delta.vercel.app/rooms/${_id}`, updateAvailability)
                                     .then(res => {
                                         console.log(res.data)
                                         if (res.data.modifiedCount) {

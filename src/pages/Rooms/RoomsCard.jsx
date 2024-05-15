@@ -33,7 +33,7 @@ const RoomsCard = ({ room }) => {
     }
    // get review for this room
    useEffect(() => {
-    axios(`http://localhost:5000/review/${_id}`)
+    axios(`https://assignment-eleven-server-delta.vercel.app/review/${_id}`)
         .then(res => {
             console.log(res.data)
             setClients(res.data)

@@ -24,6 +24,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // react toast: 
 const minimumPriceError = () => toast.error("Mustbe Added Minimum Price!");
 const maximumPriceError = () => toast.error("Mustbe Added Maximum Price!");
+const lowHighPriceError = () => toast.error("Must be Maximum Price Greaterthan Minimum Price!");
 
 
 const Rooms = () => {
@@ -48,14 +49,18 @@ const Rooms = () => {
         if (!to) {
             return maximumPriceError()
         }
+        if ( parseInt(from) > parseInt(to) ) {
+            console.log("from boro howa jabena.")
+            return lowHighPriceError()
+        }
         setFrom(from)
         setTo(to)
 
         console.log(from, to)
     }
 
-    const url = `http://localhost:5000/rooms?sort=${sort}&from=${from}&to=${to}`;
-    // const url = `http://localhost:5000/rooms?sort=${sort}`;
+    const url = `https://assignment-eleven-server-delta.vercel.app/rooms?sort=${sort}&from=${from}&to=${to}`;
+    // const url = `https://assignment-eleven-server-delta.vercel.app/rooms?sort=${sort}`;
     const { isPending, isError, error, data: allRooms = [], refetch } = useQuery({
         queryKey: ["rooms"],
         queryFn: async () => {
@@ -67,17 +72,18 @@ const Rooms = () => {
         refetch()
 
     }, [pathname, sort, refetch, from, to])
+    
 
     console.log(allRooms)
     useEffect(() => {
 
         // if (allRooms.length > 0) {
-            const available = allRooms?.filter(room => room?.Availability === true);
-            setAvailableRooms(available)
-            const offers = allRooms?.filter(room => room?.SpecialOffers);
-            setSpecialOffers(offers)
+        const available = allRooms?.filter(room => room?.Availability === true);
+        setAvailableRooms(available)
+        const offers = allRooms?.filter(room => room?.SpecialOffers);
+        setSpecialOffers(offers)
 
-            // console.log("tantak er allRooms", allRooms, "available rooms", availableRooms, "specialOfer", specialOffer)
+        // console.log("tantak er allRooms", allRooms, "available rooms", availableRooms, "specialOfer", specialOffer)
 
         // }
 

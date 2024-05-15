@@ -108,7 +108,7 @@ const Login = () => {
                 <title>RoomIntel || Login</title>
             </Helmet>
             <div className="flex justify-center mx-auto">
-                <img className="w-auto h-7 sm:h-8" src="https://merakiui.com/images/logo.svg" />
+                <img className="w-auto h-7 sm:h-8" src="https://i.ibb.co/tC4g9Ws/home-logo-and-symbols-vector-removebg-preview.png" />
             </div>
 
             <h1 className="mt-4 mb-9 text-2xl font-semibold tracking-wide text-center text-gray-800 capitalize md:text-3xl dark:text-white">

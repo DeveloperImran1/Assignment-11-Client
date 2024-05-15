@@ -66,7 +66,7 @@ const MyBooking = () => {
     // data update korar jonno useMutation function use korbo
     const { mutateAsync } = useMutation({
         mutationFn: async (room) => {
-            const { data } = await axios.put(`http://localhost:5000/rooms/${room.roomId}`, updateAvailability)
+            const { data } = await axios.put(`https://assignment-eleven-server-delta.vercel.app/rooms/${room.roomId}`, updateAvailability)
             console.log(data)
         },
         onSuccess: () => {
@@ -101,7 +101,7 @@ const MyBooking = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    axios.delete(`http://localhost:5000/bookingRoom/${room._id}`)
+                    axios.delete(`https://assignment-eleven-server-delta.vercel.app/bookingRoom/${room._id}`)
                         .then(res => {
                             if (res.data.deletedCount) {
                                 console.log(res.data)
@@ -124,7 +124,7 @@ const MyBooking = () => {
     }
     const handleUpdate = () => {
         console.log("dialog theke asa id", currentId)
-        axios.put(`http://localhost:5000/bookingRoom/${currentId}`, { updateBookingDate })
+        axios.put(`https://assignment-eleven-server-delta.vercel.app/bookingRoom/${currentId}`, { updateBookingDate })
             .then(res => {
                 if (res.data.modifiedCount) {
                     console.log(res.data)
