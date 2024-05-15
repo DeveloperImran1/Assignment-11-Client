@@ -101,12 +101,16 @@ const ContactUs = () => {
                     </form>
                 </div>
             </div>
-            <div className="flex items-center justify-center" >
+            <div className="flex  flex-col lg:flex-row justify-center" >
+                <div>
+                    <img className="w-[100%] h-[100%]" src="https://i.ibb.co/HG3bb27/pexels-photo-1438834.jpg" alt="" />
+
+                </div>
                 <MapContainer
                     center={[23.7104, 90.4074]}
                     zoom={11}
                     scrollWheelZoom={true}
-                    className="w-[80%] h-[40vh] md:h-[50vh] lg:h-[80vh]"
+                    className="w-[100%]  h-[40vh] md:h-[50vh] lg:h-[80vh]"
                 >
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                     <Marker position={[23.7104, 90.4074]}>

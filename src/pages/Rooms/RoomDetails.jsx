@@ -377,14 +377,10 @@ const RoomDetails = () => {
                                 <div className="container  mx-auto space-y-8">
                                     <div className="space-y-2 text-center">
                                         <h1
-                                            data-aos="fade-right"
-                                            data-aos-offset="300"
-                                            data-aos-easing="ease-in-sine"
+                                            data-aos="fade-down"
                                             className="text-[40px] font-bold text-[#131313] text-center w-full "> Our Satisfied Clients {clients?.length} </h1>
                                         <p
-                                            data-aos="fade-left"
-                                            data-aos-offset="300"
-                                            data-aos-easing="ease-in-sine"
+                                            data-aos="fade-down"
                                             className=" text-[16px] text-[#131313CC] text-center mb-12 w-full lg:w-[80%] mx-auto ">At Haven House, our residents satisfaction is our top priority. Dont just take our word for it hear what some of our happy residents have to say... </p>
 
 

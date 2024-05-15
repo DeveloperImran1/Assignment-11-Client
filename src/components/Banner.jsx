@@ -14,15 +14,33 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 
+import { Typewriter } from 'react-simple-typewriter'
 
 const Banner = () => {
     return (
         <div className="h-[700px] w-full bg-cover bg-no-repeat relative flex flex-col lg:flex-row items-center justify-evenly " style={{ backgroundImage: "url('https://i.ibb.co/hVgv9bN/New-banner-image-2.jpg')" }}>
 
             <div className='flex flex-col mt-8 lg:mt-0 gap-7 space-y-6 z-10 justify-center ml-10' >
-                <h1 className=' text-xl lg:text-2xl font-semibold text-white' >Explore Buying, Renting, Investing Opportunities!</h1>
+           
+                <h1 data-aos="fade-down" style={{ paddingTop: '5rem', margin: 'auto 0', fontWeight: 'normal' }}
+                    className="text-xl lg:text-2xl font-semibold text-[#029cfb]">
+                    {'Welcome!'}
+                    <span style={{ color: 'white', fontWeight: 'bold' }}>
+                        {/* Style will be inherited from the parent element */}
+                        <Typewriter
+                            words={['Explore Buying', 'Renting' , "Investing Opportunities!","in Our RoomIntel"]}
+                            loop={5}
+                            cursor
+                            cursorStyle='_'
+                            typeSpeed={70}
+                            deleteSpeed={50}
+                            delaySpeed={1000}
+
+                        />
+                    </span>
+                </h1>
                 <h1 className='text-4xl lg:text-7xl font-bold text-white'>Hunt Your <br /> Dream Home</h1>
-                <Link to="/rooms" >
+                <Link to="/rooms" data-aos="fade-up" >
                     <button className="rounded-lg hover:rounded-full border-2 border-[#076aa5] px-8 py-2 text-xl text-sky-500 duration-200 bg-[#076aa5] hover:bg-[#029cfb] text-white">Get Started</button>
                 </Link>
             </div>

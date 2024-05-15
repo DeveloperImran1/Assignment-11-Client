@@ -34,22 +34,23 @@ const SatisfiedClients = () => {
                         // data-aos="fade-right"
                         // data-aos-offset="300"
                         // data-aos-easing="ease-in-sine"
-                         className="text-[40px] font-bold text-[#131313] text-center w-full "> Our Satisfied Clients</h1>
+                         className="text-[40px] font-bold dark:text-gray-600 text-center w-full "> Our Satisfied Clients</h1>
                         <p
                         // data-aos="fade-left"
                         // data-aos-offset="300"
                         // data-aos-easing="ease-in-sine"
-                         className=" text-[16px] text-[#131313CC] text-center mb-12 w-full lg:w-[80%] mx-auto ">At RoomIntel, our residents satisfaction is our top priority. Dont just take our word for it – hear what some of our happy residents have to say... </p>
+                         className=" text-[16px] dark:text-gray-600 text-center mb-12 w-full lg:w-[80%] mx-auto ">At RoomIntel, our residents satisfaction is our top priority. Dont just take our word for it – hear what some of our happy residents have to say... </p>
 
                     </div>
+                  
+
                     <Marquee className="w-full h-[470px]" autoFill="false" pauseOnHover="true" speed="100">
-
-
+                   
                         {
                             clients.map(client => <SatisfiedClientCard key={client} client={client} ></SatisfiedClientCard> )
                         }
                     </Marquee>
-
+                   
                     <div>
                         <Marquee className="w-full " autoFill="false" pauseOnHover="true" direction="right" speed="200">
 

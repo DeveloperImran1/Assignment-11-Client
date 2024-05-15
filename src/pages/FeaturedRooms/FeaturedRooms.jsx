@@ -31,12 +31,12 @@ const FeaturedRooms = () => {
                         // data-aos="fade-right"
                         // data-aos-offset="300"
                         // data-aos-easing="ease-in-sine"
-                         className="text-[40px] font-bold text-[#131313] text-center w-full ">Featured Rooms</h1>
+                         className="text-[40px] font-bold dark:text-gray-600 text-center w-full ">Featured Rooms</h1>
                         <p
                         // data-aos="fade-left"
                         // data-aos-offset="300"
                         // data-aos-easing="ease-in-sine"
-                         className=" text-[16px] text-[#131313CC] text-center mb-12 w-full lg:w-[80%] mx-auto ">Discover our Featured Rooms! From cozy retreats to luxurious suites, explore a curated selection of exceptional accommodations tailored to elevate your stay.... </p>
+                         className=" text-[16px] dark:text-gray-600 text-center mb-12 w-full lg:w-[80%] mx-auto ">Discover our Featured Rooms! From cozy retreats to luxurious suites, explore a curated selection of exceptional accommodations tailored to elevate your stay.... </p>
 
                     </div>
 
