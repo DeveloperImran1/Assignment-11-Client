@@ -70,7 +70,7 @@ const MyBooking = () => {
             console.log(data)
         },
         onSuccess: () => {
-            swal("Successfully Booked This Room", {
+            swal("Successfully Delete This Room", {
                 icon: "success",
             });
             refetch();
@@ -94,7 +94,7 @@ const MyBooking = () => {
 
         swal({
             title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary Post!",
+            text: "Once deleted, you will not be able to recover this imaginary Booking!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -112,7 +112,7 @@ const MyBooking = () => {
 
 
                 } else {
-                    swal("Your imaginary Post is safe!");
+                    swal("Your imaginary Rooms is safe!");
                 }
             });
 
