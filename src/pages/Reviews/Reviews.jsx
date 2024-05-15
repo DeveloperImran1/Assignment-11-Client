@@ -106,7 +106,7 @@ const Reviews = () => {
                             <input type="text" value={user?.displayName} placeholder="Your name" className="block w-full text-black  rounded-md shadow-sm focus:ring focus:ring-opacity-75 border-2  p-2 focus:dark:ring-violet-600 dark:bg-gray-100" />
                         </label>
                         <textarea required name="message" rows="3" placeholder="Message..." className="p-4 border-2 rounded-md resize-none text-black dark:text-gray-800 dark:bg-gray-50" spellcheck="false"></textarea>
-                        <button type="submit" className="py-4 my-8 font-semibold rounded-md dark:text-gray-50 bg-violet-600">Leave feedback</button>
+                        <button type="submit" className="py-4 my-8 font-semibold rounded-md dark:text-gray-50 bg-violet-600">Submit Feedback</button>
                     </form>
                 </div>
                 <div className="flex items-center justify-center">

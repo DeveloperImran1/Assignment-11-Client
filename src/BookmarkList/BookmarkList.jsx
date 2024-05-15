@@ -14,14 +14,14 @@ const { _id, Area, Availability, Facilities, Location, PricePerNight, Reviews, R
             <div className=" space-y-4 flex flex-col relative  p-6 shadow-lg w-full h-[480px] max-w-sm mx-auto group transition border-2 rounded-xl hover:scale-105 border-primary hover:border-secondary border-opacity-30 hover:no-underline focus:no-underline ">
                 <div className="relative">
                     <img alt="card navigate ui" className="w-[330px] h-[230px] object-cover  rounded-xl " src={RoomImages?.[0] || 'https://i.ibb.co/k3LwX3C/folio-img2-1-1536x960.jpg'} />
-                    <div className="bg-blue-400 absolute text-[25px] font-normal text-center right-0 top-4 w-[85px] h-[35px] rounded-l-full ">{Status}</div>
+                    <div className="bg-blue-400 absolute text-[25px] font-normal text-center right-0 top-4 w-[85px] h-[35px] rounded-l-full text-black  ">{Status}</div>
                 </div>
                 <div className="grid gap-2 justify-start text-start">
-                    <h1 className="text-[20px] font-semibold text-[#131313] ">{RoomTitle}</h1>
-                    <p className="text-base text-[#131313CC] font-medium ">{RoomDescription?.slice(0, 70)}</p>
-                    <hr className="border border-dashed text-[#13131326] my-2 " />
+                    <h1 className="text-[20px] font-semibold dark:text-gray-600  ">{RoomTitle}</h1>
+                    <p className="text-base  dark:text-gray-600  ">{RoomDescription?.slice(0, 70)}</p>
+                    <hr className="border border-dashed dark:text-gray-600  my-2 " />
 
-                    <div className=" flex text-base text-[#131313CC] font-medium justify-between ">
+                    <div className=" flex text-base dark:text-gray-600  font-medium justify-between ">
                         <p>$ {PricePerNight}</p>
                         <p>{Area}</p>
                     </div>

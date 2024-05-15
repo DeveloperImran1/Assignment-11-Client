@@ -236,9 +236,7 @@ const MyBooking = () => {
                                         <Typography className="-mb-2" variant="h6">
                                             Pick a Update Date
                                         </Typography>
-                                        <Typography className="-mb-2" variant="h6">
-                                            Aitar id: {currentId}
-                                        </Typography>
+                                       
                                         <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 border border-[#5A5A5D] p-2 focus:dark:ring-violet-600 dark:bg-gray-100" />
                                         <div>
                                             <img src={`${room?.RoomImages?.[0] || "https://i.ibb.co/k3LwX3C/folio-img2-1-1536x960.jpg"}`} alt="" />

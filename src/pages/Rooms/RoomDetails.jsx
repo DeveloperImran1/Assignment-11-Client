@@ -298,7 +298,7 @@ const RoomDetails = () => {
                                     <TabPanel>
                                         <form onSubmit={handleBooking} className="flex flex-col px-6 py-8  space-y-6  w-full border-2 border-[#5A5A5D] rounded-[16px] ">
                                             <div>
-                                                <img alt="" className="w-[500px] h-full  rounded shadow-sm col-span-2 row-span-2  dark:bg-gray-500 " src={`https://i.ibb.co/k3LwX3C/folio-img2-1-1536x960.jpg`} />
+                                                <img alt="" className="w-[500px] h-full  rounded shadow-sm col-span-2 row-span-2  dark:bg-gray-500 " src={RoomImages?.[0]} />
                                                 <p className="text-[24px] font-semibold  text-center mt-5 ">Please Fillup This Form </p>
                                             </div>
 

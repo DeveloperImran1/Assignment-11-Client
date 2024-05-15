@@ -18,7 +18,7 @@ const SatisfiedClients = () => {
 
 
     useEffect(() => {
-        fetch("../../../public/CompanyIcons.json")
+        fetch("./CompanyIcons.json")
             .then(res => res.json())
             .then(data => {
                 setIcons(data)

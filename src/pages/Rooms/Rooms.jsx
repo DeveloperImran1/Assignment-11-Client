@@ -39,6 +39,17 @@ const Rooms = () => {
     const [from, setFrom] = useState(0)
     const [to, setTo] = useState(0)
 
+    const handleShort = e => {
+        e.preventDefault();
+        setSort("")
+        const sorting = e.target.value;
+        setSort(sorting)
+        console.log(sorting)
+        setFrom(0);
+        setTo(0)
+    }
+
+
     const handleFilter = (e) => {
         e.preventDefault();
         const from = e.target.from.value;
@@ -49,12 +60,13 @@ const Rooms = () => {
         if (!to) {
             return maximumPriceError()
         }
-        if ( parseInt(from) > parseInt(to) ) {
+        if (parseInt(from) > parseInt(to)) {
             console.log("from boro howa jabena.")
             return lowHighPriceError()
         }
         setFrom(from)
         setTo(to)
+        e.target.reset()
 
         console.log(from, to)
     }
@@ -72,7 +84,7 @@ const Rooms = () => {
         refetch()
 
     }, [pathname, sort, refetch, from, to])
-    
+
 
     console.log(allRooms)
     useEffect(() => {
@@ -103,23 +115,21 @@ const Rooms = () => {
             <Helmet>
                 <title>RoomIntel || Rooms</title>
             </Helmet>
-            <div className="flex flex-col lg:flex-row justify-between mb-3" >
-                <p></p>
-                <div className="flex justify-center items-center gap-4" >
-                    <div className="text-gray-700 " >
-                        <form onSubmit={handleFilter} className="flex flex-col lg:flex-row gap-3" >
-                            <input type="number" placeholder="Minimum Price" name="from" className="rounded-lg border border-[#1B8EF8] bg-transparent px-4 py-2 w-[160px] text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" />
-                            <input type="number" placeholder="Maximum Price" name="to" className="rounded-lg border border-[#1B8EF8] bg-transparent px-4 py-2 w-[160px] text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" />
-                            <button type="submit" className="rounded-lg hover:rounded-full w-[160px]  border-2 border-[#076aa5] px-8 py-2 text-xl text-sky-500 duration-200 bg-[#076aa5] hover:bg-[#029cfb] text-white">Search</button>
+            {/* <div className="flex flex-col lg:flex-row justify-between mb-3" >
+                <p></p> */}
+            <div className="flex flex-col lg:flex-row justify-center lg:justify-end items-center lg:items-end mb-5 gap-6" >
+                <div className="text-gray-700 " >
+                    <form onSubmit={handleFilter} className="flex flex-col lg:flex-row gap-3" >
+                        <input type="number" placeholder="Minimum Price" name="from" className="rounded-lg border border-[#1B8EF8] bg-transparent px-4 py-2 w-[160px] text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" />
+                        <input type="number" placeholder="Maximum Price" name="to" className="rounded-lg border border-[#1B8EF8] bg-transparent px-4 py-2 w-[160px] text-[#1B8EF8] ring-offset-1 duration-200 focus:outline-none focus:ring-2" />
+                        <button type="submit" className="rounded-lg hover:rounded-full w-[160px]  border-2 border-[#076aa5] px-8 py-2 text-xl text-sky-500 duration-200 bg-[#076aa5] hover:bg-[#029cfb] text-white">Search</button>
 
-                        </form>
-                    </div>
+                    </form>
+                </div>
+                <div className="flex flex-col lg:flex-row justify-center items-center gap-4" >
                     <div className="text-gray-700" >
                         <select
-                            onChange={e => {
-                                setSort(e.target.value)
-                                // setCurrentPage(1)
-                            }}
+                            onChange={handleShort}
                             value={sort}
                             name='sort'
                             id='sort'
@@ -131,12 +141,14 @@ const Rooms = () => {
                         </select>
                     </div>
 
+
                     <ButtonGroup className=" flex justify-center items-center">
                         <Button onClick={() => setValue(!on)} className={`${on ? "bg-[#23BE0A]" : "bg-[#59C6D2]"}`} ><IoGrid /></Button>
                         <Button onClick={() => setValue(!on)} className={`${on ? "bg-[#59C6D2]" : "bg-[#23BE0A]"}`} ><FaTableList /></Button>
                     </ButtonGroup>
                 </div>
             </div>
+            {/* </div> */}
 
 
             {

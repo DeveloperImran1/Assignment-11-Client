@@ -8,8 +8,8 @@ const Galery = () => {
             <Helmet>
                 <title>RoomIntel || Galery</title>
             </Helmet>
-            <div className="w-full py-[16px] rounded-2xl bg-[#1313130D] text-[#131313B3] mb-8 text-center">
-                <p className="text-[#131313]  font-bold text-[20px] lg:text-[28px] mb-6">Our Hotel Awesome Rooms</p>
+            <div className="w-full py-[16px] rounded-2xl bg-[#1313130D] dark:text-gray-600  mb-8 text-center">
+                <p className="dark:text-gray-600  font-bold text-[20px] lg:text-[28px] mb-6">Our Hotel Awesome Rooms</p>
                 <p className="w-[70%] mx-auto">EExplore Our Hotels Gallery! Immerse yourself in the charm and elegance of our diverse range of rooms. From luxurious suites to cozy retreats, each image captures the essence of comfort and style.</p>
             </div>
             <section className="py-6 dark:bg-gray-100 dark:text-gray-900">
@@ -63,10 +63,3 @@ export default Galery;
 
 
 
-
-// https://i.ibb.co/m4Xr05X/restroom-1.webp
-// https://i.ibb.co/jDkj3Vn/conference-11.webp
-// https://i.ibb.co/XW3fGbN/pexels-photo-1732414.jpg
-// https://i.ibb.co/945VDgV/pexels-photo-2121120.jpg
-// https://i.ibb.co/5nRfLrt/office-5.webp
-// https://i.ibb.co/GQ13QK6/office-7-1.webp
