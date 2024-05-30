@@ -122,48 +122,53 @@ const RoomDetails = () => {
 
 
 
-        if (showConfirmModal) {
-            swal({
-                title: "Are You Sure?",
-                text: "This Room You Booking!",
-                icon: "warning",
-                button: "Confirm",
-                content: {
-                    element: "div",
-                    attributes: {
-                        innerHTML: `<p>${RoomTitle}</p><p>Your Booking Date: ${bookingDate}</p><p>Price Per Night: $ ${PricePerNight}</p>       `
-                    },
-                }
-            })
-                .then((willDelete) => {
-                    console.log(willDelete)
-                    if (willDelete) {
-                        axios.post("https://assignment-eleven-server-delta.vercel.app/bookingRooms", bookignData)
-                            .then(res => {
-                                if (res.data.acknowledged) {
-                                    console.log("booking hoisa", res.data)
-                                    axios.put(`https://assignment-eleven-server-delta.vercel.app/rooms/${_id}`, updateAvailability)
-                                        .then(res => {
-                                            console.log(res.data)
-                                            if (res.data.modifiedCount) {
-                                                refetch();
-                                                swal("Successfully Booked This Room", {
-                                                    icon: "success",
-                                                });
-                                            }
-                                        })
-
-                                }
-
-                            })
-
-
-                    } else {
-                        swal("You have cancle this Booking!");
-                    }
-                });
-        }
+    
     }
+
+    const handleOperationOfBooking = ()=> {
+        // if (showConfirmModal) {
+            swal({
+               title: "Please Click here Nexu Button",
+               text: "This Room You Booking!",
+               icon: "warning",
+               button: "Next",
+               content: {
+                   element: "div",
+                   attributes: {
+                       innerHTML: `<p>${RoomTitle}</p><p>Your Booking Date: ${bookingDate}</p><p>Price Per Night: $ ${PricePerNight}</p>       `
+                   },
+               }
+           })
+               .then((willDelete) => {
+                   console.log(willDelete)
+                   if (willDelete) {
+                       axios.post("https://assignment-eleven-server-delta.vercel.app/bookingRooms", bookignData)
+                           .then(res => {
+                               if (res.data.acknowledged) {
+                                   console.log("booking hoisa", res.data)
+                                   axios.put(`https://assignment-eleven-server-delta.vercel.app/rooms/${_id}`, updateAvailability)
+                                       .then(res => {
+                                           console.log(res.data)
+                                           if (res.data.modifiedCount) {
+                                               refetch();
+                                               swal("Successfully Booked This Room", {
+                                                   icon: "success",
+                                               });
+                                           }
+                                       })
+
+                               }
+
+                           })
+
+
+                   } else {
+                       swal("You have cancle this Booking!");
+                   }
+               });
+    //    }
+    }
+
 
     // social icons
     const svgs = [
@@ -179,23 +184,16 @@ const RoomDetails = () => {
         <div>
             {/* payment modal  */}
 
-            <div className="mx-auto w-fit">
+            <div className="mx-auto border-2 w-fit">
                 <div
                     onClick={() => setOpenModal(false)}
                     className={`fixed z-[100] flex items-center justify-center ${openModal ? 'visible opacity-100' : 'invisible opacity-0'} inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-transparent`}
                 >
                     <div onClick={(e_) => e_.stopPropagation()} className={`text- absolute max-w-md rounded-lg bg-white p-6 drop-shadow-lg dark:bg-gray-800 dark:text-white ${openModal ? 'scale-1 opacity-1 duration-300' : 'scale-0 opacity-0 duration-150'}`}>
-                        <div type="submit" className="absolute bottom-0" >
-                            <Payment PricePerNight={PricePerNight} setShowConfirmModal={setShowConfirmModal} setOpenModal={setOpenModal} ></Payment>
+                        <div type="submit" className=" " >
+                            <Payment PricePerNight={PricePerNight} setShowConfirmModal={setShowConfirmModal} setOpenModal={setOpenModal} handleOperationOfBooking={handleOperationOfBooking} ></Payment>
                         </div>
-                        <div className="flex justify-between">
-                            <button onClick={() => setOpenModal(false)} className="me-2 rounded-md bg-indigo-600 hover:bg-indigo-700 px-6 py-[6px] text-white">
-                                Ok
-                            </button>
-                            <button onClick={() => setOpenModal(false)} className="rounded-md border border-rose-600 px-6 py-[6px] text-rose-600 duration-150 hover:bg-rose-600 hover:text-white">
-                                Cancel
-                            </button>
-                        </div>
+        
                     </div>
                 </div>
             </div>

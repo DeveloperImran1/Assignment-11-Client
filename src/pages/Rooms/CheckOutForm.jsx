@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
 
-const CheckOutForm = ({ PricePerNight, setShowConfirmModal, setOpenModal }) => {
+const CheckOutForm = ({ PricePerNight, setShowConfirmModal, setOpenModal, handleOperationOfBooking }) => {
     const stripe = useStripe();
     const elements = useElements()
     const [error, setError] = useState('')
@@ -17,7 +17,7 @@ const CheckOutForm = ({ PricePerNight, setShowConfirmModal, setOpenModal }) => {
 
     useEffect(() => {
         if (PricePerNight > 0) {
-            axios.post('http://localhost:5000/create-payment-intent', { price: PricePerNight })
+            axios.post('https://assignment-eleven-server-delta.vercel.app/create-payment-intent', { price: PricePerNight })
                 .then(res => {
                     console.log(res.data.clientSecret)
                     console.log(res.data)
@@ -76,6 +76,7 @@ const CheckOutForm = ({ PricePerNight, setShowConfirmModal, setOpenModal }) => {
                 setTransactionId(paymentIntent.id)
                 setOpenModal(false)
                 setShowConfirmModal(true)
+                handleOperationOfBooking()
 
             }
         }
@@ -84,7 +85,7 @@ const CheckOutForm = ({ PricePerNight, setShowConfirmModal, setOpenModal }) => {
 
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="" >
             <CardElement
                 options={{
                     style: {
@@ -102,9 +103,9 @@ const CheckOutForm = ({ PricePerNight, setShowConfirmModal, setOpenModal }) => {
                 }}
             > </CardElement>
 
-            <button type="submit" className="btn btn-secondary mt-5" disabled={!stripe} >Pay</button>
+            <button type="submit" className="btn btn-secondary mt-11 mb-5" disabled={!stripe} >Pay</button>
      
-            <p className="text-red-500" >{error}</p>
+            <p className="text-red-500 mb-5" >{error}</p>
             <p className="text-green-500" >Your Transaction Id: {transactionId}</p>
         </form>
     );
