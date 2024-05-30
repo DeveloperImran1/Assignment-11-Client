@@ -103,7 +103,7 @@ const CheckOutForm = ({ PricePerNight, setShowConfirmModal, setOpenModal, handle
                 }}
             > </CardElement>
 
-            <button type="submit" className="btn btn-secondary mt-11 mb-5" disabled={!stripe} >Pay</button>
+            <button type="submit" className="btn bg-[#0064c2] text-white mt-11 mb-5" disabled={!stripe} >Pay</button>
      
             <p className="text-red-500 mb-5" >{error}</p>
             <p className="text-green-500" >Your Transaction Id: {transactionId}</p>
