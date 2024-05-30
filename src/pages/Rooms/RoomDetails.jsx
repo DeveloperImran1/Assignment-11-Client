@@ -32,6 +32,7 @@ import Marquee from "react-fast-marquee";
 import SatisfiedClientCard from "../Home/SatisfiedClientCard";
 import { BsEmojiHeartEyes } from "react-icons/bs";
 import { Helmet } from "react-helmet-async";
+import Payment from "./Payment";
 
 
 
@@ -44,8 +45,11 @@ const RoomDetails = () => {
     const [bookMark, setBookmark] = useState(false);
     const navigate = useNavigate();
 
+    const [showConfirmModal, setShowConfirmModal] = useState(false)
+
     // user review
     const [clients, setClients] = useState([]);
+    const [openModal, setOpenModal] = useState(false);
 
 
 
@@ -112,46 +116,53 @@ const RoomDetails = () => {
             return bookingError()
         }
 
-
-        swal({
-            title: "Are You Sure?",
-            text: "This Room You Booking!",
-            icon: "warning",
-            button: "Confirm",
-            content: {
-                element: "div",
-                attributes: {
-                    innerHTML: `<p>${RoomTitle}</p><p>Your Booking Date: ${bookingDate}</p><p>Price Per Night: $ ${PricePerNight}</p>`
-                },
-            }
-        })
-            .then((willDelete) => {
-                console.log(willDelete)
-                if (willDelete) {
-                    axios.post("https://assignment-eleven-server-delta.vercel.app/bookingRooms", bookignData)
-                        .then(res => {
-                            if (res.data.acknowledged) {
-                                console.log("booking hoisa", res.data)
-                                axios.put(`https://assignment-eleven-server-delta.vercel.app/rooms/${_id}`, updateAvailability)
-                                    .then(res => {
-                                        console.log(res.data)
-                                        if (res.data.modifiedCount) {
-                                            refetch();
-                                            swal("Successfully Booked This Room", {
-                                                icon: "success",
-                                            });
-                                        }
-                                    })
-
-                            }
-
-                        })
+        {/* Open the modal using document.getElementById('ID').showModal() method */ }
+        setOpenModal(true)
 
 
-                } else {
-                    swal("You have cancle this Booking!");
+
+
+        if (showConfirmModal) {
+            swal({
+                title: "Are You Sure?",
+                text: "This Room You Booking!",
+                icon: "warning",
+                button: "Confirm",
+                content: {
+                    element: "div",
+                    attributes: {
+                        innerHTML: `<p>${RoomTitle}</p><p>Your Booking Date: ${bookingDate}</p><p>Price Per Night: $ ${PricePerNight}</p>       `
+                    },
                 }
-            });
+            })
+                .then((willDelete) => {
+                    console.log(willDelete)
+                    if (willDelete) {
+                        axios.post("https://assignment-eleven-server-delta.vercel.app/bookingRooms", bookignData)
+                            .then(res => {
+                                if (res.data.acknowledged) {
+                                    console.log("booking hoisa", res.data)
+                                    axios.put(`https://assignment-eleven-server-delta.vercel.app/rooms/${_id}`, updateAvailability)
+                                        .then(res => {
+                                            console.log(res.data)
+                                            if (res.data.modifiedCount) {
+                                                refetch();
+                                                swal("Successfully Booked This Room", {
+                                                    icon: "success",
+                                                });
+                                            }
+                                        })
+
+                                }
+
+                            })
+
+
+                    } else {
+                        swal("You have cancle this Booking!");
+                    }
+                });
+        }
     }
 
     // social icons
@@ -166,6 +177,30 @@ const RoomDetails = () => {
 
     return (
         <div>
+            {/* payment modal  */}
+
+            <div className="mx-auto w-fit">
+                <div
+                    onClick={() => setOpenModal(false)}
+                    className={`fixed z-[100] flex items-center justify-center ${openModal ? 'visible opacity-100' : 'invisible opacity-0'} inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-transparent`}
+                >
+                    <div onClick={(e_) => e_.stopPropagation()} className={`text- absolute max-w-md rounded-lg bg-white p-6 drop-shadow-lg dark:bg-gray-800 dark:text-white ${openModal ? 'scale-1 opacity-1 duration-300' : 'scale-0 opacity-0 duration-150'}`}>
+                        <div type="submit" className="absolute bottom-0" >
+                            <Payment PricePerNight={PricePerNight} setShowConfirmModal={setShowConfirmModal} setOpenModal={setOpenModal} ></Payment>
+                        </div>
+                        <div className="flex justify-between">
+                            <button onClick={() => setOpenModal(false)} className="me-2 rounded-md bg-indigo-600 hover:bg-indigo-700 px-6 py-[6px] text-white">
+                                Ok
+                            </button>
+                            <button onClick={() => setOpenModal(false)} className="rounded-md border border-rose-600 px-6 py-[6px] text-rose-600 duration-150 hover:bg-rose-600 hover:text-white">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
 
             <Helmet>
                 <title>RoomIntel || Room Details</title>
@@ -193,13 +228,13 @@ const RoomDetails = () => {
 
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full h-full" >
-                      
+
                         <div className="diff aspect-[16/9] w-full  h-full lg:[200px]  rounded shadow-sm lg:col-span-2 lg:row-span-2  dark:bg-gray-500 ">
                             <div className="diff-item-1">
-                                <img  alt="daisy" src={RoomImages?.[0]} />
+                                <img alt="daisy" src={RoomImages?.[0]} />
                             </div>
                             <div className="diff-item-2 blur">
-                                <img  alt="daisy" src={RoomImages?.[0]} />
+                                <img alt="daisy" src={RoomImages?.[0]} />
                             </div>
                             <div className="diff-resizer"></div>
                         </div>
@@ -295,7 +330,7 @@ const RoomDetails = () => {
                                         <Tab>Contact Us</Tab>
                                     </TabList>
 
-                                    <TabPanel>
+                                    <TabPanel >
                                         <form onSubmit={handleBooking} className="flex flex-col px-6 py-8  space-y-6  w-full border-2 border-[#5A5A5D] rounded-[16px] ">
                                             <div>
                                                 <img alt="" className="w-[500px] h-full  rounded shadow-sm col-span-2 row-span-2  dark:bg-gray-500 " src={RoomImages?.[0]} />
@@ -327,11 +362,14 @@ const RoomDetails = () => {
                                                 <input type="text" placeholder="Your name" value={`$ ${PricePerNight}`} className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 border border-[#5A5A5D] p-2 focus:dark:ring-violet-600 dark:bg-gray-100" />
                                             </label>
 
-                                            <button className="rounded-lg border-2 border-sky-500 px-8 py-3 text-xl text-sky-500 duration-200 hover:bg-[#199fff] hover:text-white">Book Now</button>
 
 
+                                            <button type="submit" className="rounded-lg  border-2 border-sky-500 px-8 py-3 text-xl text-sky-500 duration-200 hover:bg-[#199fff] hover:text-white">Book Now</button>
 
                                         </form>
+
+
+
                                     </TabPanel>
                                     <TabPanel>
                                         <div className="max-w-[400px] md:w-[450px] p-4 md:p-6  rounded-2xl space-y-3 lg:space-y-8  bg-base-200    shadow-lg group transition border-2  hover:scale-105 border-[] hover:border-[#076aa5] border-opacity-30 hover:no-underline focus:no-underline">

@@ -1,4 +1,5 @@
-*/WebSite Name : RoomIntel */Live Site url: https://assignment-eleven-6f668.web.app/
+*/WebSite Name : RoomIntel 
+*/Live Site url: https://room-intel.netlify.app/
 
 Assignment_category_0004
 */features and characteristics:

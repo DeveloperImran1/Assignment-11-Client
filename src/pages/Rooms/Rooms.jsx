@@ -68,7 +68,7 @@ const Rooms = () => {
         setTo(to)
         e.target.reset()
 
-        console.log(from, to)
+        // console.log(from, to)
     }
 
     const url = `https://assignment-eleven-server-delta.vercel.app/rooms?sort=${sort}&from=${from}&to=${to}`;
