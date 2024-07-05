@@ -1,32 +1,104 @@
-*/WebSite Name : RoomIntel 
-*/Live Site url: https://room-intel.netlify.app/
+## Website Name: RoomIntel
+A dynamic website for booking rooms with detailed information and price range filters, featuring multiple routes and user authentication. Users can book their favorite room.
 
-Assignment_category_0004
-*/features and characteristics:
+## Credential:
+**Email:** user@user.com
+**Password:** User1234
 
-* Any Person visit My website and he choose room with detail information and Price range. If This room is avail able.
+## Live Site URL:
+Visit the live site at [RoomIntel Live](https://room-intel.netlify.app/)
 
-* Your Price range dia filter korte parben.
+## Features and Characteristics:
 
-* my website have 7+ routes You can take service from any routes you want .
+- **Interactive Home Slider:** Engage visitors with a dynamic image slider in the Home section, complete with intuitive navigation arrows for a seamless browsing experience.
+- **Detailed Room Cards:** Highlight available rooms with detailed cards in the Featured section, each showcasing essential information and a "Details" button for more in-depth insights.
+- **Effortless Room Booking:** Allow users to easily book rooms and have their reservations added to the All About Information section for convenient tracking and management.
+- **Secure User Authentication:** Enhance security and user experience with robust registration, login, and logout functionality integrated into the Navbar.
+- **Personalized Profile Page:** Provide users with a dedicated Profile page where they can view and update their name and image URL, creating a personalized touch.
+- **Comprehensive Price Range Filter:** Enable users to find rooms that fit their budget by utilizing an efficient price range filter, ensuring a tailored search experience.
+- **Extensive Routing:** Offer a diverse array of services across more than 7 routes, ensuring users can navigate and access various functionalities with ease.
 
-* If you look at the Home section, you'll see a nice slider and two arrow button in it. If you click on left or right button slideid now more image.
+## How to Start This Application:
+1. **Clone the Repositories:**
+    ```sh
+    # Client Side:
+    git clone https://github.com/DeveloperImran1/Assignment-11-Client.git
+    cd Assignment-11-Client
+    ```
+    ```sh
+    # Server Side:
+    git clone https://github.com/DeveloperImran1/Assignment-11-server.git
+    cd Assignment-11-server
+    ```
+2. **Install Dependencies:**
+    ```sh
+    npm install
+    ```
+3. **Start the Development Server:**
+    ```sh
+    nodemon index.js
+    ```
+4. **Build for Production:**
+    ```sh
+    npm run build
+    ```
+5. **Deploy to Firebase:**
+    ```sh
+    firebase deploy
+    ```
 
-* Next a Featured section a slider. This slider contain Our propertys some information. Every card contain information of rooms. and card bottom an Details button. If you click on the button you will get the details of that specific room which is very interesting.
+## Server Side Github link:
+```sh
+https://github.com/DeveloperImran1/Assignment-11-server
+```
 
-* If you click on the add Booking button from the Booking this room if this room avail able, it will be added to the All About Informaion. This rooms seeing all User.
+## Dependencies
 
-* You can view the All rooms of Rooms pages route a.
+- **Frontend:**
+  - React: A JavaScript library for building user interfaces.
+  - React Router: Declarative routing for React applications.
+  - Axios: Promise-based HTTP client for the browser and Node.js.
+  - React Query: Hooks for fetching, caching, and updating asynchronous data in React.
+  - SweetAlert2: Beautiful, responsive, customizable replacement for JavaScript's popup boxes.
+  - React-Hot-Toast: Beautiful, responsive, customizable replacement for JavaScript's notification/alert.
+  - Tailwind CSS: A utility-first CSS framework for rapid UI development.
+  - Headless UI: Unstyled, fully accessible UI components for React.
 
-* If you look at the Navbar right site , you see now login or logOut button. You register now with register page. and Than you login now same password and email.
+- **Backend:**
+  - Express: Fast, unopinionated, minimalist web framework for Node.js.
+  - MongoDB: NoSQL database for storing application data.
+  - Mongoose: Elegant MongoDB object modeling for Node.js.
+  - Cors: Middleware for enabling Cross-Origin Resource Sharing.
+  - Dotenv: Module to load environment variables from a `.env` file.
 
-* Besides, there are Profile route. You should see Your name and image Url in this route.
+## Additional Information
 
-* I Use 3 npm package: a. AOS Package b. Animate.css c. Swiper slider d. React-leaflet
+- **Environment Variables:**
+  - Create a `.env.local` file in the root of your client project and add the following variables:
+    ```plaintext
+    VITE_APIKEY=Your firebase config file
+    VITE_AUTHDOMAIN=Your firebase config file
+    VITE_PROJECTID=Your firebase config file
+    VITE_STORAGEBUCKET=Your firebase config file
+    VITE_MESSAGINGSENDERID=Your firebase config file
+    VITE_APPID=Your firebase config file
+    VITE_SERVER='http://localhost:5000'
+    VITE_IMG_KEY= your imageBB Api key
+    ```
+  - Create a `.env` file in the root of your server project and add the following variables:
+    ```plaintext
+    DB_USER=your database username in MongoDB
+    DB_PASS=your database password in MongoDB
+    ```
 
-* I use all CRUD Oeration in my website.
+- **Folder Structure:**
+  - `client/`: Contains the React frontend code.
+  - `server/`: Contains the Express backend code.
 
-* I will try to my best and tried to make the website user friendly. i think user will lot of benefited using website.
+## Contributing
 
+If you'd like to contribute to this project, please fork the repository and use a feature branch. Pull requests are welcome.
 
+## License
 
+This project is open-source and available under the [MIT License](LICENSE).
