@@ -48,9 +48,9 @@ Visit the live site at [RoomIntel Live](https://room-intel.netlify.app/)
     ```
 
 ## Server Side Github link:
-```sh
-https://github.com/DeveloperImran1/Assignment-11-server
-```
+
+<a href="https://github.com/DeveloperImran1/Assignment-11-server">Server Code<a/>
+
 
 ## Dependencies
 
