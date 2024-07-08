@@ -18,6 +18,9 @@ Visit the live site at [RoomIntel Live](https://room-intel.netlify.app/)
 - **Comprehensive Price Range Filter:** Enable users to find rooms that fit their budget by utilizing an efficient price range filter, ensuring a tailored search experience.
 - **Extensive Routing:** Offer a diverse array of services across more than 7 routes, ensuring users can navigate and access various functionalities with ease.
 
+## Used Technology and Framework: 
+HTML, CSS, Tailwind CSS, Javascript, ReactJS, Firebase, NodeJS, ExpressJS, MongoDB
+
 ## How to Start This Application:
 1. **Clone the Repositories:**
     ```sh
